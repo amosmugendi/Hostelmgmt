@@ -1,0 +1,165 @@
+body {
+    margin: 0;
+    font-family: Arial, Helvetica, sans-serif;
+  }
+  
+  nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #333;
+    color: #fff;
+    padding: 10px 20px;
+  }
+  
+  nav ul {
+    display: flex;
+    list-style: none;
+  }
+  
+  nav li {
+    margin-left: 20px;
+  }
+  
+  nav a {
+    color: #fff;
+    text-decoration: none;
+    font-size: 18px;
+  }
+  
+  .dashboard {
+    padding: 40px;
+  }
+  
+  .dashboard h1 {
+    font-size: 36px;
+    margin-bottom: 30px;
+  }
+  
+  .cards {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+  }
+  
+  .card {
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+    width: calc(33.33% - 20px);
+    margin-bottom: 20px;
+  }
+  
+  .card h3 {
+    margin-top: 10px;
+    margin-bottom: 5px;
+  }
+  
+  .card p {
+    font-size: 14px;
+    color: #888;
+  }
+  
+  .card i {
+    font-size: 24px;
+    color: #333;
+    margin-bottom: 10px;
+    display: block;
+    text-align: center;
+  }
+  
+  @import url(https://fonts.googleapis.com/css?family=Robot>
+  );
+  *{
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    text-decoration: none;
+    box-sizing: border;
+  }
+ 
+  .sidebar{
+    position:absolute;
+    left: -250px;
+    width: 250px;
+    height: 100%;
+    background: #042331;
+    transition: all .5s ease;
+  }
+  .sidebar header{
+    font-size: 22px;
+    color: white;
+    text-align: center;
+    line-height: 70px;
+    background: #063146;
+    user-select: none;
+
+  }
+.sidebar ul a{
+      display:block;
+      height: 100%;
+      width: 100%;
+      line-height:65px;
+      font-size: 20px;
+      color: white;
+      padding-left: 40px;
+      box-sizing: border-box;
+      border-top: 1px solid rgba(255,255,255,1);
+      border-bottom: 1px solid black; 
+      transition:.4s;   
+}
+ul li:hover a{
+    padding-left: 50px;
+}
+#check{
+  display:none;
+}
+label #btn, label #cancel{
+  position: absolute;
+  cursor: pointer;
+  background:#042331;
+  border-radius: 3px ;
+}
+label #btn{
+  left: 40px;
+  top: 25px;
+  font-size: 33px;
+  color: white;
+  padding: 6px 12px;
+  transition: all .5s;
+}
+ label #cancel{
+  z-index: 1111;
+  left: -220px;
+  top: 5px;
+  font-size: 10px;
+  color: #0a5275;
+  padding: 4px 6px;
+  transition: all .5s ease;
+ }
+#check:checked ~ .sidebar{
+  left:0;
+}
+#check:checked ~ label #btn{
+  left: 250px;
+  opacity: 0;
+  pointer-events: none;
+}
+#check:checked ~ label #cancel{
+  left: 220px;
+}
+#check:checked ~ section{
+  margin-left: 250px;
+}
+section{
+ background-image: url(../pictures/hstl.jpg);
+ background-repeat: no-repeat;
+  background-position: center;
+  background-size:cover;
+  height:100vh;
+  transition: all .5s ease;
+}
+section h1{
+  position: center;
+}
