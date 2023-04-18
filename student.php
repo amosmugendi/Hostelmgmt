@@ -87,7 +87,7 @@ echo 'Welcome ' . $_SESSION['id'];
                             location.href = "registration.php";
                         }
                         document.getElementById("bookbtn").onclick = function() {
-                            location.href = "bookform.php";
+                            location.href = "bookedRooms.php";
                         }
                     </script>
                 </div>

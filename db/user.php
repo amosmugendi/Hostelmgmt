@@ -32,7 +32,7 @@
          }
          public function getUser($email,$password){
 
-            {try{ $sql="SELECT `id`,`email`, `password` FROM `users` WHERE email=:email AND :password";
+            {try{ $sql="SELECT `id`,`role`,`email`, `password` FROM `users` WHERE email=:email AND :password";
                 $stmt= $this->db->prepare($sql);
                 $stmt->bindparam(':email',$email);
                 $stmt->bindparam(':password',$password);

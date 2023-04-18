@@ -14,67 +14,11 @@
     <script src="https://kit.fontawesome.com/8836deeb78.js" crossorigin="anonymous"></script>
     <script src="../js/script.js"></script>
     <title>Home Page <?php $title ?></title>
-    <style>
-        nav1 ul {
-            list-style: none;
-            margin: 0;
-            padding: 0;
-        }
-
-        nav1 li {
-            display: inline-block;
-            margin: 0 10px;
-            position: relative;
-        }
-
-        nav1 li.dropdown:hover .dropdown-menu {
-            display: block;
-        }
-
-        nav1 .dropdown-menu {
-            background-color: #fff;
-            border: 1px solid #ccc;
-            display: none;
-            position: absolute;
-            top: 100%;
-            left: 0;
-            z-index: 1;
-        }
-
-        nav1 .dropdown-menu li {
-            display: block;
-            margin: 0;
-            padding: 0;
-        }
-
-        nav1 .dropdown-menu li a {
-            color: #333;
-            display: block;
-            padding: 10px;
-            text-decoration: none;
-        }
-
-        nav1 .dropdown-menu li a:hover {
-            background-color: #f4f4f4;
-        }
-    </style>
 </head>
-
 <body>
     <header>
         <div class="logo-menu">
-            <h2>HMS
-                <nav1>
-                    <ul>
-                        <li><a href="#"></a></li>
-                        <ul class="dropdown-menu">
-                            li><a href="#">Student Login</a></li>
-                            <li><a href="#">Admin Login</a></li>
-                        </ul>
-                        </li>
-                    </ul>
-                </nav1>
-            </h2>
+            <h2>HMS </h2>
         </div>
         <nav class="navigation">
             <a href="#">Home</a>

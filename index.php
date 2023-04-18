@@ -16,10 +16,11 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         session_start();
         $_SESSION['email'] = $email;
         $_SESSION['id'] = $result['id'];
-        if($result['role']="admin"){
+
+        if($result['role']=='admin'){
             header("Location: admin.php");
         }
-        else{
+        elseif($result['role']=='web_user'){
             header("Location: student.php");
         }
       

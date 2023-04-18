@@ -31,7 +31,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             session_start();
             $_SESSION["success"] ="Booking Successfull";
             //echo 'operation successful';
-            header("Location: ../bookform.php");
+            header("Location: ../bookroom.php");
         } else {
             echo 'an error occurred please try again';
         }
