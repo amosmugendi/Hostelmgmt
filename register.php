@@ -17,14 +17,11 @@
         $isSuccess= $crud->insertStudent($reg,$fname,$lname,$email,$id,$dob,$phone,$county,$contact);
 
         if($isSuccess){
-            echo 'operation sucessful';
+           echo 'Operation Sucessful';
+           header('Location:index.php');
             
         }else{
             echo 'an error occured please try again';
         }
-       
-        
-
-
     }
 ?>

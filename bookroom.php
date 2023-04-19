@@ -16,18 +16,21 @@
              <br>
              <br>
              <br>
-             <label for="room_type">Service Type:</label>
-             <select id="room_type" name="room_type">
-                 <option value="">Selet type of room..</option>
-                 <option value="single">Single Room</option>
-                 <option value="shared">Sharing</option>
-             </select>
+
+                <label for="room_type">Room Category:</label>
+                <select id="room_type" name="room_type">
+                    <option value="">Selet type of room..</option>
+                    <option value="single">Single Room</option>
+                    <option value="shared">Sharing</option>
+                </select
              <br>
              <br>
              <div id='rooms_list'></div>
              <br>
              <br>
              <button type="submit">Book Now </button>
+             <button type="subit"><a onclick="return confirm('are you sure you want to cancel?');"href="student.php?id" type="submit">Cancel</a></button>
+
          </form>
      </div>
      <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
@@ -73,14 +76,14 @@
          });
      </script>
      <script>
-         // Get a reference to the service type dropdown menu
+         // Get a reference to the room Category dropdown menu
          var serviceType = document.getElementById("room_type");
          // Get a reference to the details text input field
          var detailsSection = document.getElementById("details-section");
          var details = document.getElementById("details");
          // Attach a change event listener to the service type dropdown menu
          serviceType.addEventListener("change", function() {
-             // If the selected value is "brake_service", display the details section
+             // If the selected value is "sigle room", display the details section
              if (serviceType.value === "single") {
                  detailsSection.style.display = "block";
                  details.required = true;
@@ -90,5 +93,7 @@
              }
          });
      </script>
+    
+
 
  </section>

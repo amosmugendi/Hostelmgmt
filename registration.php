@@ -29,7 +29,7 @@ include_once 'includes/session.php';
             </div>
             <div class="input-box">
                 <span class="details">ID/Passport </span>
-                <input type="text" placeholder="Enter your ID/Passport" id="id" name="passport" required>
+                <input type="text" placeholder="Enter your ID/Passport" id="id" name="id" required>
             </div>
             <div class="input-box">
                 <span class="details">date of birth</span>
@@ -37,7 +37,7 @@ include_once 'includes/session.php';
             </div>
             <div class="input-box">
                 <span class="details">Phone Number</span>
-                <input type="text" placeholder="enter your phone number" id="phone" name="number" required>
+                <input type="text" placeholder="enter your phone number" id="phone" name="phone" required>
             </div>
             <div class="input-box">
                 <span class="details">Home County</span>
