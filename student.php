@@ -62,7 +62,7 @@ echo 'Welcome ' . $_SESSION['id'];
                     <i class="fas fa-user"></i>
                     <h3>User Profile</h3>
                     <p>this card contains my details</p>
-                    <button>View Profile</button>
+                    <button id="profbtn">View Profile</button>
                 </div>
                 <div class="card">
                     <i class="fas fa-bed"></i>
@@ -74,7 +74,7 @@ echo 'Welcome ' . $_SESSION['id'];
                     <i class="fas fa-utensils"></i>
                     <h3>Food Menu</h3>
                     <p>Categories of foods provided</p>
-                    <button>View Menu</button>
+                    <button id="foodbtn">Book</button>
                 </div>
                 <div class="card">
                     <i class="fas fa-pen-square"></i>
@@ -89,6 +89,13 @@ echo 'Welcome ' . $_SESSION['id'];
                         document.getElementById("bookbtn").onclick = function() {
                             location.href = "bookroom.php";
                         }
+                        document.getElementById("profbtn").onclick = function() {
+                            location.href = "viewrecords.php";
+                        }
+                        document.getElementById("foodbtn").onclick = function() {
+                            location.href = "foodmenu.php";
+                        }
+                        
                     </script>
                 </div>
             </div>

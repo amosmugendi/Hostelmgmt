@@ -65,7 +65,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     </div>
     <div class="form-box-register">
         <h2>Regitration</h2>
-        <form method="post" action="sucess.php">
+        <form method="post" action="sucess.php" id="register" name="register">
             <div class="input-box">
                 <span class="icon">
                     <input type="Email" name="email" id="email" required>
@@ -92,6 +92,28 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                 <p>Already have an account?<a href="#" class="login-link"> Login</a></p>
             </div>
         </form>
+        <script>
+        function validateForm() {
+            let email = document.forms['register']['email'].value;
+            let password = document.forms['register']['password'].value;
+            let confirmPassword = document.forms['register']['confirmPassword'].value;
+            
+
+            let atposition = email.indexOf("@");
+            let dotposition = email.lastIndexOf(".");
+
+            if (email == "" || password == "" || confirmPassword == "") {
+                alert("Form cannot be blank.Enter details correctly.");
+                return false;
+            } else if (password != confirmPassword) {
+                alert("Password and confirm password do not match");
+                return false;
+            } else if (atposition < 1 || dotposition < atposition + 2 || dotposition + 2 >= email.length) {
+                alert("Enter valid email.Email must contain @ symbol and dot .");
+                return false;
+            }
+        }
+    </script>
     </div>
 </div>
 

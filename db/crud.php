@@ -8,17 +8,17 @@ class crud
     {
         $this->db = $conn;
     }
-    public function insertStudent($reg, $fname, $lname, $email, $id, $dob, $phone, $county, $contact)
+    public function insertStudent($reg, $fname, $lname, $email, $idno, $dob, $phone, $county, $contact)
     {
         try {
-            $sql = "INSERT INTO student_details(reg,fname,lname,email,id,dob,phone,county,contact) VALUES(:reg,:fname,:lname,:email,:id,:dob,:phone,:county,:contact)";
+            $sql = "INSERT INTO student_details(reg,fname,lname,email,idno,dob,phone,county,contact) VALUES(:reg,:fname,:lname,:email,:idno,:dob,:phone,:county,:contact)";
             $stmt = $this->db->prepare($sql);
 
             $stmt->bindparam(':reg', $reg);
             $stmt->bindparam(':fname', $lname);
             $stmt->bindparam(':lname', $lname);
             $stmt->bindparam(':email', $email);
-            $stmt->bindparam(':id', $id);
+            $stmt->bindparam(':idno', $idno);
             $stmt->bindparam(':dob', $dob);
             $stmt->bindparam(':phone', $phone);
             $stmt->bindparam(':county', $county);
@@ -62,6 +62,32 @@ class crud
             return false;
         }
     }
+
+    public function newfood($reg, $food_id,$date)
+    {
+        try {
+            //check if entry with the same student exhist
+            
+
+            $sql = "INSERT INTO `foodbookings` (`food_id`,`reg`, `date`)VALUES(:food_id,:reg,:date)";
+            $stmt = $this->db->prepare($sql);
+            $stmt->bindparam(':reg', $reg);
+            $stmt->bindparam(':food_id', $food_id);
+            $stmt->bindparam(':date', $date);
+            //$stmt->bindparam(':food', $food);
+            //$stmt->bindparam(':status',$roomstatus);
+            // execute insert statement
+                $stmt->execute();
+                return true;
+            // //execute statement
+            // $stmt-> execute();
+            // return true;
+
+        } catch (PDOException $e) {
+            echo $e->getMessage();
+            return false;
+        }
+    }
     public function countBookings($roomid)
     {
         try {
@@ -92,5 +118,18 @@ class crud
                 return false;
             }
         }
+    }
+    public function getStudentDetails($id)
+    {try{ $sql="select * from student_details where reg=:id";
+       $stmt= $this->db->prepare($sql);     
+       $stmt->bindparam(':id',$id);
+       $stmt->execute();
+       $result= $stmt->fetch();
+       return $result;
+       }catch(PDOException $e){
+               echo $e->getmessage();
+               return false;
+           }
+      
     }
 }
