@@ -68,19 +68,19 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         <form method="post" action="sucess.php" id="register" name="register">
             <div class="input-box">
                 <span class="icon">
-                    <input type="Email" name="email" id="email" required>
+                    <input type="Email" name="email" id="email" >
                     <label>Email</label>
                 </span>
             </div>
             <div class="input-box">
                 <span class="icon">
-                    <input type="password" name="password" id="password" #required>
+                    <input type="password" name="password" id="password" >
                     <label>Password</label>
                 </span>
             </div>
             <div class="input-box">
                 <span class="icon">
-                    <input type="password" required>
+                    <input type="password" name="confirm-password" id="confirm-password" >
                     <label>Confirm Password</label>
                 </span>
             </div>
@@ -91,29 +91,35 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             <div class="login-register">
                 <p>Already have an account?<a href="#" class="login-link"> Login</a></p>
             </div>
-        </form>
-        <script>
-        function validateForm() {
-            let email = document.forms['register']['email'].value;
-            let password = document.forms['register']['password'].value;
-            let confirmPassword = document.forms['register']['confirmPassword'].value;
-            
+            <script>
+            function validateLoginForm() {
+                // Get input values
+                const email = document.getElementById('email').value.trim();
+                const password = document.getElementById('password').value.trim();
+                const confirmPassword = document.getElementById('confirm-password').value.trim();
 
-            let atposition = email.indexOf("@");
-            let dotposition = email.lastIndexOf(".");
+                // Email validation regex
+                const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
-            if (email == "" || password == "" || confirmPassword == "") {
-                alert("Form cannot be blank.Enter details correctly.");
-                return false;
-            } else if (password != confirmPassword) {
-                alert("Password and confirm password do not match");
-                return false;
-            } else if (atposition < 1 || dotposition < atposition + 2 || dotposition + 2 >= email.length) {
-                alert("Enter valid email.Email must contain @ symbol and dot .");
-                return false;
+                // Check if email is valid
+                if (!emailRegex.test(email)) {
+                    alert('Please enter a valid email address.');
+                    return false;
+                }
+
+                // Check if password matches confirm password
+                if (password !== confirmPassword) {
+                    alert('Passwords do not match.');
+                    return false;
+                }
+
+                // If everything is valid, return true
+                return true;
             }
-        }
-    </script>
+
+            </script>
+        </form>
+        
     </div>
 </div>
 
