@@ -20,4 +20,27 @@ class reports
             return false;
         }        
     }
+    public function getRooms(){try{
+        $sql = "SELECT * FROM `rooms` ";
+        $result=$this->db->query($sql);
+        return $result;
+        }catch(PDOException $e){
+            echo $e->getmessage();
+            return false;
+        }
+        
+     }
+     public function getRoomDetails($id)
+     {try{ $sql="select * from rooms where id=:id";
+        $stmt= $this->db->prepare($sql);
+        $stmt->bindparam(':id',$id);                            
+        $stmt->execute();
+        $result= $stmt->fetch();
+        return $result;
+        }catch(PDOException $e){
+                echo $e->getmessage();
+                return false;
+            }
+       
+     }
 }

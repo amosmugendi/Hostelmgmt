@@ -103,6 +103,25 @@ class crud
             return false;
         }
     }
+    public function insertRoom($id,$room_type,$fee,$max_occupants,$status)
+    {
+        try {
+            $sql = "INSERT INTO rooms(id,room_type,fee,max_occupants,status) VALUES(:id,:room_type,:fee,:max_occupants,:status)";
+            $stmt = $this->db->prepare($sql);
+
+            $stmt->bindparam(':id', $id);
+            $stmt->bindparam(':room_type', $room_type);
+            $stmt->bindparam(':fee', $fee);
+            $stmt->bindparam(':max_occupants', $max_occupants);
+            $stmt->bindparam(':status', $status);
+            //execute statement
+            $stmt->execute();
+            return true;
+        } catch (PDOException $e) {
+            echo $e->getMessage();
+            return false;
+        }
+    }
     public function getRooms()
     { {
             try {
@@ -119,6 +138,18 @@ class crud
             }
         }
     }
+    public function resetRoom($id){
+        try{$sql = "UPDATE rooms SET status = 'empty' WHERE id =:id";
+            $stmt=$this->db->prepare($sql);
+            $stmt->bindparam(':id',$id);
+            $stmt->execute();
+            return true;
+        }catch(PDOException $e){
+            echo $e->getmessage();
+            return false;
+        }
+        
+     }
     public function getStudentDetails($id)
     {try{ $sql="select * from student_details where reg=:id";
        $stmt= $this->db->prepare($sql);     

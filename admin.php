@@ -24,7 +24,7 @@ include_once 'includes/session.php';
                         <br>
                         <span class="nav-item">Admin DashBoard</span>
                     </a></li>
-                <li><a href="#">
+                <li><a href="admin.php">
                         <i class="fas fa-home"></i>
                         <span class="nav-item">Home</span>
                     </a></li>
@@ -36,7 +36,7 @@ include_once 'includes/session.php';
                         <i class="fas fa-chess-rook"></i>
                         <span class="nav-item">View Room Booked</span>
                     </a></li>
-                <li><a href="">
+                <li><a href="viewrooms.php">
                         <i class="fas fa-bed"></i>
                         <span class="nav-item">Update Room Details</span>
                     </a></li>
@@ -73,9 +73,9 @@ include_once 'includes/session.php';
                     <i class="fas fa-utensils"></i>
                     <h3>Food Menu</h3>
                     <p>Categories of foods provided</p>
-                    <button>View Menu</button>
+                    <button>View Booked Meals</button>
                 </div>
-                <div class="card">
+                <div class="card" id="updatebtn">
                     <i class="fas fa-pen-square"></i>
                     <h3>Update Your Details</h3>
                     <p>Make sure your personal details are up-to-date</p>
@@ -87,6 +87,9 @@ include_once 'includes/session.php';
                         }
                         document.getElementById("bookbtn").onclick = function() {
                             location.href = "bookedRooms.php";
+                        }
+                        document.getElementById("updatebtn").onclick = function() {
+                            location.href = "viewrooms.php";
                         }
                     </script>
                 </div>
