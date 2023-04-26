@@ -1,5 +1,5 @@
 <?php
-$title="View Rooms";
+$title="View Student";
 include_once 'db/conn.php';
 include_once 'includes/session.php';
 
@@ -8,7 +8,7 @@ if(!isset($_GET['id'])){
     
 }else{
     $id=$_GET['id'];
-    $result = $reports->getRoomDetails($id);;
+    $result = $reports->getStudentDetails($id);
 
 ?>
 <!DOCTYPE html>
@@ -135,22 +135,34 @@ a {
         <div class="card" style="width: 18rem">
         <div class="card-body">
             <h5 class="card-title">
-                Room Details
+                Student Details
             </h5>
             <p class="Card-text">
-                RoomID: <?php echo $result['id'];?>
+                Registration Number: <?php echo $result['reg'];?>
             </p>
             <p class="Card-text">
-                Room Type: <?php echo $result['room_type'];?>
+                First Name: <?php echo $result['fname'];?>
             </p>
             <p class="card-text">
-                Fees per Sem: <?php echo $result['fee'];?>
+                Last Name: <?php echo $result['lname'];?>
             </p>
             <p class="card-text">
-                Maximum Occupants: <?php echo $result['max_occupants'];?>
+                Email: <?php echo $result['email'];?>
             </p>
             <p class="card-text">
-                Room Status: <?php echo $result['status'];?>
+                ID/Passport: <?php echo $result['idno'];?>
+            </p>
+            <p class="card-text">
+                Date of Birth: <?php echo $result['dob'];?>
+            </p>
+            <p class="card-text">
+                Phone Number: <?php echo $result['phone'];?>
+            </p>
+            <p class="card-text">
+                Home County: <?php echo $result['county'];?>
+            </p>
+            <p class="card-text">
+                Emergency Contact: <?php echo $result['contact'];?>
             </p>
             
         </div>
@@ -158,10 +170,9 @@ a {
     </div>
     <br>
     <td>
-         <a href="viewrooms.php?id= <?php echo $result['id']?>" class="primary-button">Back to List</a>
-         <a href="editroom.php?id= <?php echo $result['id']?>" class="warning-button">Edit</a>
-         <a onclick="return confirm('are you sure you want to delete this record?');"href="delete.php?id= <?php echo $r['id']?>" class="delete-button">Delete</a>
-</td>
+         <a href="viewstudents.php?id= <?php echo $result['reg']?>" class="primary-button">Back to List</a>
+         <a href="editroom.php?id= <?php echo $result['reg']?>" class="warning-button">Edit</a>
+    </td>
 <?php } ?>
 
         </section>

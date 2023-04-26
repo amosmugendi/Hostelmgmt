@@ -43,4 +43,28 @@ class reports
             }
        
      }
+     public function getStudent()
+     {try{
+        $sql = "SELECT * FROM `student_details`";
+        $result=$this->db->query($sql);
+        return $result;
+        }catch(PDOException $e){
+            echo $e->getmessage();
+            return false;
+        }
+        
+     }
+     public function getStudentDetails($id)
+     {try{ $sql="select * from student_details where reg=:id";
+        $stmt= $this->db->prepare($sql);
+        $stmt->bindparam(':id',$id);                            
+        $stmt->execute();
+        $result= $stmt->fetch();
+        return $result;
+        }catch(PDOException $e){
+                echo $e->getmessage();
+                return false;
+            }
+       
+     }
 }

@@ -1,9 +1,10 @@
-<?php
 
+<?php
+$title="View students";
 include_once 'db/conn.php';
 include_once 'includes/session.php';
 
-$result = $reports->activeBookings();
+$result = $reports->getStudent();
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -27,13 +28,39 @@ $result = $reports->activeBookings();
             text-align: left;
             padding: 8px;
         }
+        td .a{
+            padding: 0%;
+        }
+        tr td:last-child {
+        display: flex;
+        justify-content: center;
+        gap: 10px;
+        }
 
         th {
             background-color: #4CAF50;
             color: white;
         }
-    </style>
-    </style>
+
+button {
+  border: none;
+  color: white;
+  padding: 5px 2px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  border-radius: 10px;
+  font-size: 16px;
+  margin-top: 15px;
+  margin: 4px 2px;
+  cursor: pointer;
+}
+
+.warning-button {background-color:yellow;} /* yellow */
+.delete-button {background-color: red;} /* Red */ 
+.primary-button {background-color: blue} /* Gray */ 
+.success-button{background-color: darkgray} /* Black */
+</style>
 </head>
 
 <body>
@@ -42,8 +69,7 @@ $result = $reports->activeBookings();
             <ul>
                 <li><a href="#" class="logo">
                         <img SRC="" alt="">
-                        <br>
-                        <span class="nav-item">Admin</span>
+                        <span class="nav-item">Admin DashBoard</span>
                     </a></li>
                 <li><a href="#">
                         <i class="fas fa-home"></i>
@@ -65,41 +91,33 @@ $result = $reports->activeBookings();
                         <i class="fas fa-utensils"></i>
                         <span class="nav-item">Update Food Menu</span>
                     </a></li>
-                <li><a href="logout.php
-                " class="logout">
+                <li><a href="logout.php" class="logout">
                         <i class="fas fa-sign-out-alt"></i>
                         <span class="nav-item">Logout </span>
                     </a></li>
             </ul>
         </nav>
         <section class="main">
-            <?php
-            echo "<table>";
-            echo "<tr>
-                    <th>Booking ID</th>
-                    <th>Room Number</th>
-                    <th>Student ID</th>
-                    <th>Booking Date</th>                   
-                </tr>";
-            if (count($result) > 0) {
-                foreach ($result as $row) {
-                    echo "<tr>
-                    <td>" . $row["id"] . "</td>
-                    <td>" . $row["roomid"] . "</td>
-                    <td>" . $row["studentregno"] . "</td>
-                    <td>" . $row["date"] . "</td> 
-                </tr>";
-                }
-            } else {
-                echo "<tr>
-                    <td colspan='4'>No bookings found.</td>
-                </tr>";
-            }
-            echo "</table>";
-            ?>
-
-
-        </section>
+        <h1 class="text-center">List of Registered Students</h1>
+        <table>
+                 <tr>
+                    
+                    <th>Regno</th>
+                    <th>First Name</th>
+                    <th>Last Name</th>
+                    <th>Email</th>                
+                 </tr>
+                <?php 
+                while ($r=$result->fetch(PDO::FETCH_ASSOC)) {?>
+                <tr>
+                    <td>  <?php echo $r['reg']?></td>
+                    <td> <?php echo $r['fname']?></td>
+                    <td> <?php echo $r['lname']?></td>
+                    <td> <?php echo $r['email']?></td>
+                </tr>
+            <?php } ?>
+        </table>
+         </section>
     </div>
 </body>
 

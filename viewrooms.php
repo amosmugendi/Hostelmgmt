@@ -116,7 +116,7 @@ button {
                     <td> <?php echo $r['status']?></td>
                     <td>
                        <button type="button" class="primary-button"><a href="viewroom.php?id= <?php echo $r['id']?>">view</a></button> 
-                       <button type="button" class="warning-button"><a href="edit.php?id= <?php echo $r['id']?>" >Edit</a></button>
+                       <button type="button" class="warning-button"><a href="editroom.php?id= <?php echo $r['id']?>" >Edit</a></button>
                        <button type="button" class="delete-button"><a onclick="return confirm('are you sure you want to reset this room?');"href="delete.php?id= <?php echo $r['id']?>">Reset</a></button>
                     </td>
                 </tr>

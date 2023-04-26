@@ -15,7 +15,7 @@ class crud
             $stmt = $this->db->prepare($sql);
 
             $stmt->bindparam(':reg', $reg);
-            $stmt->bindparam(':fname', $lname);
+            $stmt->bindparam(':fname', $fname);
             $stmt->bindparam(':lname', $lname);
             $stmt->bindparam(':email', $email);
             $stmt->bindparam(':idno', $idno);
@@ -36,7 +36,7 @@ class crud
     {
         try {
             //check if entry with the same student exhist
-            
+
 
             $sql = "INSERT INTO `bookings` (`roomid`, `studentregno`, `date`)VALUES(:roomid,:reg,:current_date)";
             $stmt = $this->db->prepare($sql);
@@ -63,11 +63,11 @@ class crud
         }
     }
 
-    public function newfood($reg, $food_id,$date)
+    public function newfood($reg, $food_id, $date)
     {
         try {
             //check if entry with the same student exhist
-            
+
 
             $sql = "INSERT INTO `foodbookings` (`food_id`,`reg`, `date`)VALUES(:food_id,:reg,:date)";
             $stmt = $this->db->prepare($sql);
@@ -77,8 +77,8 @@ class crud
             //$stmt->bindparam(':food', $food);
             //$stmt->bindparam(':status',$roomstatus);
             // execute insert statement
-                $stmt->execute();
-                return true;
+            $stmt->execute();
+            return true;
             // //execute statement
             // $stmt-> execute();
             // return true;
@@ -92,8 +92,8 @@ class crud
     {
         try {
             //$sql = 'SELECT count (*) as count FROM `bookings` WHERE `roomid` = :roomid';
-            $sql="select count(*) as num from bookings where roomid=:roomid";
-            $stmt = $this->db->prepare($sql);           
+            $sql = "select count(*) as num from bookings where roomid=:roomid";
+            $stmt = $this->db->prepare($sql);
             $stmt->bindparam(':roomid', $roomid);
             $stmt->execute();
             $result = $stmt->fetch();
@@ -103,7 +103,7 @@ class crud
             return false;
         }
     }
-    public function insertRoom($id,$room_type,$fee,$max_occupants,$status)
+    public function insertRoom($id, $room_type, $fee, $max_occupants, $status)
     {
         try {
             $sql = "INSERT INTO rooms(id,room_type,fee,max_occupants,status) VALUES(:id,:room_type,:fee,:max_occupants,:status)";
@@ -138,29 +138,80 @@ class crud
             }
         }
     }
-    public function resetRoom($id){
-        try{$sql = "UPDATE rooms SET status = 'empty' WHERE id =:id";
-            $stmt=$this->db->prepare($sql);
-            $stmt->bindparam(':id',$id);
+    public function editRoom($id, $room_type, $fee, $max_occupants, $status)
+    {
+        try {
+            $sql = "UPDATE ` rooms` SET `id`= :id,`room_type`=:room_type,`fee`=:fee,`max_occupants`=:max_occupants,`status`=:status WHERE attendee_id= :id";
+
+            $stmt = $this->db->prepare($sql);
+            //bind all placeholders to the actual values
+            $stmt->bindparam(':id', $id);
+            $stmt->bindparam(':room_type', $room_type);
+            $stmt->bindparam(':fee', $fee);
+            $stmt->bindparam(':max_occupants', $max_occupants);
+            $stmt->bindparam(':status', $status);
+            //execute statement
+
+            //execute statement 
             $stmt->execute();
             return true;
-        }catch(PDOException $e){
+        } catch (PDOException $e) {
             echo $e->getmessage();
             return false;
         }
-        
-     }
+    }
+    public function resetRoom($id)
+    {
+        try {
+            $sql = "UPDATE rooms SET status = 'empty' WHERE id =:id";
+            $stmt = $this->db->prepare($sql);
+            $stmt->bindparam(':id', $id);
+            $stmt->execute();
+            return true;
+        } catch (PDOException $e) {
+            echo $e->getmessage();
+            return false;
+        }
+    }
     public function getStudentDetails($id)
-    {try{ $sql="select * from student_details where reg=:id";
-       $stmt= $this->db->prepare($sql);     
-       $stmt->bindparam(':id',$id);
-       $stmt->execute();
-       $result= $stmt->fetch();
-       return $result;
-       }catch(PDOException $e){
-               echo $e->getmessage();
-               return false;
-           }
-      
+    {
+        try {
+            $sql = "select * from student_details where reg=:id";
+            $stmt = $this->db->prepare($sql);
+            $stmt->bindparam(':id', $id);
+            $stmt->execute();
+            $result = $stmt->fetch();
+            return $result;
+        } catch (PDOException $e) {
+            echo $e->getmessage();
+            return false;
+        }
+    }
+    public function editStudent($id,$reg, $fname, $lname, $email, $idno, $dob, $phone, $county, $contact)
+    {
+        try {
+            $sql = "UPDATE `student_details` SET `reg`= :reg,`fname`=:fname,`lname`=:lname,`email`=:email,`idno`=:idno,`dob`=:dob,`phone`=:phone,`county`=:county,`contact`=:contact, WHERE reg= :id";
+
+            $stmt = $this->db->prepare($sql);
+            //bind all placeholders to the actual values
+            $stmt->bindparam(':id', $id);
+            $stmt->bindparam(':reg', $reg);
+            $stmt->bindparam(':fname', $fname);
+            $stmt->bindparam(':lname', $lname);
+            $stmt->bindparam(':email', $email);
+            $stmt->bindparam(':idno', $idno);
+            $stmt->bindparam(':dob', $dob);
+            $stmt->bindparam(':phone', $phone);
+            $stmt->bindparam(':county', $county);
+            $stmt->bindparam(':contact', $contact);
+            //execute statement
+
+            //execute statement 
+            $stmt->execute();
+            return true;
+        } catch (PDOException $e) {
+            echo $e->getmessage();
+            return false;
+        }
     }
 }

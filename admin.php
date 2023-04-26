@@ -1,5 +1,4 @@
 <?php
-
 include_once 'db/conn.php';
 include_once 'includes/session.php';
 ?>
@@ -19,18 +18,18 @@ include_once 'includes/session.php';
     <div class="container">
         <nav>
             <ul>
-                <li><a href="#" class="logo">
+                <li><a href="admin.php" class="logo">
                         <img SRC="" alt="">
                         <br>
-                        <span class="nav-item">Admin DashBoard</span>
+                        <span class="nav-item">Admin</span>
                     </a></li>
                 <li><a href="admin.php">
                         <i class="fas fa-home"></i>
                         <span class="nav-item">Home</span>
                     </a></li>
-                <li><a href="#">
+                <li><a href="viewstudents.php">
                         <i class="fas fa-user"></i>
-                        <span class="nav-item">Users Profile</span>
+                        <span class="nav-item">Students</span>
                     </a></li>
                 <li><a href="#">
                         <i class="fas fa-chess-rook"></i>
@@ -38,7 +37,7 @@ include_once 'includes/session.php';
                     </a></li>
                 <li><a href="viewrooms.php">
                         <i class="fas fa-bed"></i>
-                        <span class="nav-item">Update Room Details</span>
+                        <span class="nav-item">Rooms</span>
                     </a></li>
                 <li><a href="">
                         <i class="fas fa-utensils"></i>
@@ -53,35 +52,38 @@ include_once 'includes/session.php';
         </nav>
         <section class="main">
             <div class="main-top">
-                <h1>Profile</h1>
+                <h1>Admin Pannel</h1>
                 <i class="fas fa-user-cog"></i>
             </div>
-            <div class="myprofile">
+            <div class="myprofile" id="stdnbtn" >
                 <div class="card">
                     <i class="fas fa-user"></i>
-                    <h3>User Profile</h3>
-                    <p>this card contains my details</p>
-                    <button>View Profile</button>
+                    <h3>Registered Students</h3>
+                    <p>This card contains a list of registered students</p>
+                    <button>View</button>
                 </div>
                 <div class="card">
                     <i class="fas fa-bed"></i>
-                    <h3>Book Room</h3>
-                    <p></p>
-                    <button id="bookbtn">View Room Booked</button>
+                    <h3>Booked Rooms</h3>
+                    <p> This card Contains a list of booked rooms</p>
+                    <button id="bookbtn">View</button>
                 </div>
                 <div class="card">
                     <i class="fas fa-utensils"></i>
-                    <h3>Food Menu</h3>
-                    <p>Categories of foods provided</p>
-                    <button>View Booked Meals</button>
+                    <h3>Booked Meals</h3>
+                    <p>This card contains a list of all the foods booked</p>
+                    <button>View</button>
                 </div>
-                <div class="card" id="updatebtn">
+            <div class="card" id="updatebtn">
                     <i class="fas fa-pen-square"></i>
-                    <h3>Update Your Details</h3>
+                    <h3></h3>
                     <p>Make sure your personal details are up-to-date</p>
                     <button id="regbtn">Update</button>
                     <script>
                         //script to acctivate buttons on the student pannel
+                        document.getElementById("stdnbtn").onclick = function() {
+                            location.href = "studentlist.php";
+                        }
                         document.getElementById("regbtn").onclick = function() {
                             location.href = "registration.php";
                         }

@@ -128,20 +128,21 @@ $result = $reports->getRooms();
                 <input type="radio" id="occupied" name="status" value="Full" required>
                 <label for="occupied">Fully Booked</label><br>
                 <input type="submit" value="Submit">
+                <a onclick="return confirm('are you sure you want to cancel?');" href="viewrooms.php"> Cancel</a>
+
                 <script>
-                function checkMaxOccupants() {
-                    var room_type = document.getElementById("room_type").value;
-                    var max_occupants = document.getElementById("max_occupants");
-                    if (room_type === "single") {
-                        max_occupants.value = 1;
-                    } 
-                    else{
-                        max_occupants.value = 2;
+                    function checkMaxOccupants() {
+                        var room_type = document.getElementById("room_type").value;
+                        var max_occupants = document.getElementById("max_occupants");
+                        if (room_type === "single") {
+                            max_occupants.value = 1;
+                        } else {
+                            max_occupants.value = 2;
+                        }
                     }
-                }
-            </script>
+                </script>
             </form>
-            
+
 
         </section>
     </div>
