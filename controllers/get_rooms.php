@@ -8,7 +8,7 @@ if (isset($_POST['room_type'])) {
     $pass = '';
     $charset = 'utf8mb4';
     $connection = mysqli_connect($host, $user, $pass, $db);
-    
+
     $query = "SELECT * FROM rooms WHERE room_type = '$room_type' AND status = 'empty' OR status = 'partial'";
     $result = mysqli_query($connection, $query);
 

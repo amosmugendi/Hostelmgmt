@@ -8,7 +8,7 @@ if (isset($_POST['diet_type'])) {
     $pass = '';
     $charset = 'utf8mb4';
     $connection = mysqli_connect($host, $user, $pass, $db);
-    
+
     $query = "SELECT * FROM food_menu WHERE diet_type = '$diet_type' ";
     $result = mysqli_query($connection, $query);
 

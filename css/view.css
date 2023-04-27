@@ -1,0 +1,69 @@
+table {
+    border-collapse: collapse;
+    width: 100%;
+    background-color: #f9f9f9;
+}
+
+th,
+td {
+    text-align: left;
+    padding: 8px;
+}
+td .a{
+    padding: 0%;
+}
+tr td:last-child {
+display: flex;
+justify-content: center;
+gap: 10px;
+}
+
+th {
+    background-color: #4CAF50;
+    color: white;
+}
+
+button {
+border: none;
+color: white;
+padding: 5px 2px;
+text-align: center;
+text-decoration: none;
+display: inline-block;
+border-radius: 10px;
+font-size: 16px;
+margin-top: 15px;
+margin: 4px 2px;
+cursor: pointer;
+}
+
+.warning-button {background-color:#CED226} /* yellow */
+.delete-button {background-color: red;} /* Red */ 
+.primary-button {background-color: #2596be} /* Gray */ 
+.success-button{background-color: darkgray} /* Black */
+.card {
+    border: 1px solid #ccc; /* add a border to the card */
+    border-radius: 5px; /* round the corners of the card */
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.1); /* add a shadow to the card */
+    margin-bottom: 20px; /* add some space between cards */
+    width: 18rem;
+  }
+  
+  .card-body {
+    padding: 20px; /* add padding to the card body */
+  }
+  
+  .card-title {
+    font-size: 1.2rem; /* increase the font size of the card title */
+    font-weight: bold; /* make the card title bold */
+    margin-bottom: 10px; /* add some space below the card title */
+  }
+  
+  .card-subtitle {
+    font-size: 1rem; /* decrease the font size of the card subtitle */
+    margin-bottom: 10px; /* add some space below the card subtitle */
+  }
+  
+  .card-text {
+    margin-bottom: 5px; /* add some space below the card text */
+  }

@@ -23,6 +23,3 @@
     $users=new users($pdo);
     $reports= new reports($pdo);
     $users->insertUser("admin@gmail.com","password");
-
-
-?> 

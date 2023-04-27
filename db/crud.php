@@ -62,19 +62,37 @@ class crud
             return false;
         }
     }
+    public function insertFood($food_id, $diet_type, $food, $Day)
+    {
+        try {
+            $sql = "INSERT INTO food_menu (food_id,diet_type,food,Day) VALUES(:food_id,:diet_type,:food,:Day)";
+            $stmt = $this->db->prepare($sql);
 
+            $stmt->bindparam(':food_id', $food_id);
+            $stmt->bindparam(':diet_type', $diet_type);
+            $stmt->bindparam(':food', $food);
+            $stmt->bindparam(':Day', $Day);
+
+            //execute statement
+            $stmt->execute();
+            return true;
+        } catch (PDOException $e) {
+            echo $e->getMessage();
+            return false;
+        }
+    }
     public function newfood($reg, $food_id, $date)
     {
         try {
             //check if entry with the same student exhist
 
 
-            $sql = "INSERT INTO `foodbookings` (`food_id`,`reg`, `date`)VALUES(:food_id,:reg,:date)";
+            $sql = "INSERT INTO `foodbookings` (`reg`,`food_id`, `date`)VALUES(:reg,:food_id,:date)";
             $stmt = $this->db->prepare($sql);
+            //$stmt->bindparam(':food_id', $food_id);
             $stmt->bindparam(':reg', $reg);
-            $stmt->bindparam(':food_id', $food_id);
             $stmt->bindparam(':date', $date);
-            //$stmt->bindparam(':food', $food);
+            $stmt->bindparam(':food_id', $food_id);
             //$stmt->bindparam(':status',$roomstatus);
             // execute insert statement
             $stmt->execute();
@@ -85,6 +103,41 @@ class crud
 
         } catch (PDOException $e) {
             echo $e->getMessage();
+            return false;
+        }
+    }
+    public function editFood($id, $diet_type, $food, $Day)
+    {
+        try {
+            $sql = "UPDATE ` food_menu` SET `id`= :food_id,` diet_type`=:diet_type,`food`=:food,`Day`=:Day WHERE food_id= :id";
+
+            $stmt = $this->db->prepare($sql);
+            //bind all placeholders to the actual values
+            $stmt->bindparam(':food_id', $id);
+            $stmt->bindparam(':diet_type', $diet_type);
+            $stmt->bindparam(':food', $food);
+            $stmt->bindparam(':Day', $Day);
+
+            //execute statement
+
+            //execute statement 
+            $stmt->execute();
+            return true;
+        } catch (PDOException $e) {
+            echo $e->getmessage();
+            return false;
+        }
+    }
+    public function deleteFood($id)
+    {
+        try {
+            $sql = "delete from Food_menu where food_id=:id";
+            $stmt = $this->db->prepare($sql);
+            $stmt->bindparam(':id', $id);
+            $stmt->execute();
+            return true;
+        } catch (PDOException $e) {
+            echo $e->getmessage();
             return false;
         }
     }
@@ -141,7 +194,7 @@ class crud
     public function editRoom($id, $room_type, $fee, $max_occupants, $status)
     {
         try {
-            $sql = "UPDATE ` rooms` SET `id`= :id,`room_type`=:room_type,`fee`=:fee,`max_occupants`=:max_occupants,`status`=:status WHERE attendee_id= :id";
+            $sql = "UPDATE ` rooms` SET `id`= :id,`room_type`=:room_type,`fee`=:fee,`max_occupants`=:max_occupants,`status`=:status WHERE room_id= :id";
 
             $stmt = $this->db->prepare($sql);
             //bind all placeholders to the actual values
@@ -187,7 +240,7 @@ class crud
             return false;
         }
     }
-    public function editStudent($id,$reg, $fname, $lname, $email, $idno, $dob, $phone, $county, $contact)
+    public function editStudent($id, $reg, $fname, $lname, $email, $idno, $dob, $phone, $county, $contact)
     {
         try {
             $sql = "UPDATE `student_details` SET `reg`= :reg,`fname`=:fname,`lname`=:lname,`email`=:email,`idno`=:idno,`dob`=:dob,`phone`=:phone,`county`=:county,`contact`=:contact, WHERE reg= :id";

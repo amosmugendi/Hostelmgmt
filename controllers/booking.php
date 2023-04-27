@@ -12,10 +12,10 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     if ($roomtype == 'single') {
         $roomstatus = "full";
     } else {
-        $result= $crud->countBookings($roomid);
-        
+        $result = $crud->countBookings($roomid);
 
-        if ($result['num']>=1) {
+
+        if ($result['num'] >= 1) {
             $roomstatus = "full";
         } else {
             $roomstatus = "partial";
@@ -29,7 +29,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         $isSuccess = $crud->newBooking($reg, $roomid, $current_date, $roomstatus);
         if ($isSuccess) {
             session_start();
-            $_SESSION["success"] ="Booking Successfull";
+            $_SESSION["success"] = "Booking Successfull";
             //echo 'operation successful';
             header("Location: ../bookroom.php");
         } else {
