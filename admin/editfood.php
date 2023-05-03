@@ -1,8 +1,8 @@
 <?php
 $title = "Edit Room";
-include_once 'db/conn.php';
-include_once 'includes/session.php';
-include_once 'includes/adminheader.php';
+include_once '../db/conn.php';
+include_once '../includes/session.php';
+include_once '../includes/adminheader.php';
 if (!isset($_GET['id'])) {
     //error messages 
     include 'includes/errormessage.php';
@@ -43,5 +43,5 @@ if (!isset($_GET['id'])) {
         <?php  } ?>
         </section>
         <?php
-        include_once 'includes/adminfooter.php';
+        include_once '../includes/adminfooter.php';
         ?>

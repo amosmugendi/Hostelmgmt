@@ -2,6 +2,7 @@ table {
     border-collapse: collapse;
     width: 100%;
     background-color: #f9f9f9;
+    /* height: 100vh; */
 }
 
 th,
@@ -9,9 +10,9 @@ td {
     text-align: left;
     padding: 8px;
 }
-td .a{
-    padding: 0%;
-}
+/* .small-button {
+  padding: 5px 10px;
+} */
 tr td:last-child {
 display: flex;
 justify-content: center;
@@ -26,21 +27,25 @@ th {
 button {
 border: none;
 color: white;
-padding: 5px 2px;
+/* padding: 5px 2px; */
 text-align: center;
 text-decoration: none;
 display: inline-block;
-border-radius: 10px;
+border-radius: 10px; 
 font-size: 16px;
 margin-top: 15px;
 margin: 4px 2px;
 cursor: pointer;
 }
+.small-button {
+  font-size: 14px;
+  padding: 5px 10px;
+}
 
-.warning-button {background-color:#CED226} /* yellow */
+.warning-button {background-color:#CED226;} /* yellow */
 .delete-button {background-color: red;} /* Red */ 
-.primary-button {background-color: #2596be} /* Gray */ 
-.success-button{background-color: darkgray} /* Black */
+.primary-button {background-color: #2596be ;} /* Gray */ 
+.success-button{background-color: darkgray;} /* Black */
 .card {
     border: 1px solid #ccc; /* add a border to the card */
     border-radius: 5px; /* round the corners of the card */

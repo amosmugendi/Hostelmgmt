@@ -1,16 +1,13 @@
 <?php
-    include_once 'db/conn.php';
-    include_once 'includes/session.php';
+    include_once '../db/conn.php';
+    include_once '../includes/session.php';
+    include_once '../includes/studentheader.php'
     ?>
 
- <head>
-     <link rel="stylesheet" href="css/bookform.css">
-     <link rel="stylesheet" href="css/style.css">
- </head>
- <section>
+ <section class="main">
+ <h1 class="text-center">Food Booking Form</h1>
      <div class="container">
-         <div class="title">Food Booking Form</div>
-         <form class="booking-form-container" action="controllers/foodbooking.php" method="POST">
+         <form class="booking-form-container" action="../controllers/foodbooking.php" method="POST">
              <label for="reg_number">Registration Number:</label>
              <input type="text" id="reg_number" name="reg" required>
              <br>
@@ -37,7 +34,7 @@
              <div id='foods_list'></div>
              <br>
              <br>
-             <button type="submit">Book Now </button>
+             <button type="submit" class="primary-button small-button">Book Now </button>
              <button type="subit"><a onclick="return confirm('are you sure you want to cancel?');"href="student.php?id" type="submit">Cancel</a></button>
 
          </form>
@@ -51,7 +48,7 @@
 
                  // send an AJAX request to retrieve the list of rooms
                  $.ajax({
-                     url: "./controllers/get_foodmenu.php",
+                     url: "../controllers/get_foodmenu.php",
                      type: "POST",
                      data: {
                          diet_type: diet_type

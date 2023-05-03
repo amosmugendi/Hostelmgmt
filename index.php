@@ -1,6 +1,18 @@
 <?php
 include_once 'db/conn.php';
 include_once 'includes/header.php';
+session_start();
+
+if (isset($_SESSION['id'])) {    // prevent user from going to index page
+    if ($_SESSION['role'] == 'admin') {
+        header("Location: ./admin.php");
+    }
+    if ($_SESSION['role'] == 'web_user') {
+        header("Location: ./student.php");
+    }
+}
+
+
 //include_once 'includes/header.php';
 
 
@@ -12,19 +24,24 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $result = $users->getUser($email, $new_password);
     if (!$result) {
         echo '<div>Email or password is incorrect! please try again.</div>';
-    } else {      
-        session_start();
-        $_SESSION['email'] = $email;
-        $_SESSION['id'] = $result['id'];
+    } else {
+        $pass = "password";
+        $change_pass = md5($pass . $email);
+        //change password
+        // if ($result['password'] == $change_pass) {
+        //     header("Location: changepass.php");
+        // } else 
+        if($result){
+            $_SESSION['email'] = $email;
+            $_SESSION['id'] = $result['id'];
+            $_SESSION['role'] = $result['role'];
 
-        if($result['role']=='admin'){
-            header("Location: admin.php");
+            if ($result['role'] == 'admin') {
+                header("Location: admin/admin.php");
+            } elseif ($result['role'] == 'web_user') {
+                header("Location: student/student.php");
+            }
         }
-        elseif($result['role']=='web_user'){
-            header("Location: student.php");
-        }
-      
-      //  header("Location: student.php");
     }
 }
 ?>
@@ -68,19 +85,19 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         <form method="post" action="sucess.php" id="register" name="register">
             <div class="input-box">
                 <span class="icon">
-                    <input type="Email" name="email" id="email" >
+                    <input type="Email" name="email" id="email">
                     <label>Email</label>
                 </span>
             </div>
             <div class="input-box">
                 <span class="icon">
-                    <input type="password" name="password" id="password" >
+                    <input type="password" name="password" id="password">
                     <label>Password</label>
                 </span>
             </div>
             <div class="input-box">
                 <span class="icon">
-                    <input type="password" name="confirm-password" id="confirm-password" >
+                    <input type="password" name="confirm-password" id="confirm-password">
                     <label>Confirm Password</label>
                 </span>
             </div>
@@ -92,34 +109,33 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                 <p>Already have an account?<a href="#" class="login-link"> Login</a></p>
             </div>
             <script>
-            function validateLoginForm() {
-                // Get input values
-                const email = document.getElementById('email').value.trim();
-                const password = document.getElementById('password').value.trim();
-                const confirmPassword = document.getElementById('confirm-password').value.trim();
+                function validateLoginForm() {
+                    // Get input values
+                    const email = document.getElementById('email').value.trim();
+                    const password = document.getElementById('password').value.trim();
+                    const confirmPassword = document.getElementById('confirm-password').value.trim();
 
-                // Email validation regex
-                const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+                    // Email validation regex
+                    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
-                // Check if email is valid
-                if (!emailRegex.test(email)) {
-                    alert('Please enter a valid email address.');
-                    return false;
+                    // Check if email is valid
+                    if (!emailRegex.test(email)) {
+                        alert('Please enter a valid email address.');
+                        return false;
+                    }
+
+                    // Check if password matches confirm password
+                    if (password !== confirmPassword) {
+                        alert('Passwords do not match.');
+                        return false;
+                    }
+
+                    // If everything is valid, return true
+                    return true;
                 }
-
-                // Check if password matches confirm password
-                if (password !== confirmPassword) {
-                    alert('Passwords do not match.');
-                    return false;
-                }
-
-                // If everything is valid, return true
-                return true;
-            }
-
             </script>
         </form>
-        
+
     </div>
 </div>
 

@@ -1,8 +1,11 @@
 <?php
 $title = "Admin Dashboard";
-require_once 'includes/adminheader.php';
-require_once 'db/conn.php';
+require_once '../includes/adminheader.php';
+require_once '../db/conn.php';
 ?>
+<head>
+  <link rel="stylesheet" href="../css/dashboards.css">
+</head>
 
 <section class="main">
     <div class="main-top">
@@ -58,5 +61,5 @@ require_once 'db/conn.php';
 <br>
 
 <?php
-require_once 'includes/adminfooter.php';
+require_once '../includes/adminfooter.php';
 ?>

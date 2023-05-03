@@ -8,13 +8,14 @@ class crud
     {
         $this->db = $conn;
     }
-    public function insertStudent($reg, $fname, $lname, $email, $idno, $dob, $phone, $county, $contact)
+    public function insertStudent($reg, $userid,$fname, $lname, $email, $idno, $dob, $phone, $county, $contact)
     {
         try {
-            $sql = "INSERT INTO student_details(reg,fname,lname,email,idno,dob,phone,county,contact) VALUES(:reg,:fname,:lname,:email,:idno,:dob,:phone,:county,:contact)";
+            $sql = "INSERT INTO student_details(reg,userid,fname,lname,email,idno,dob,phone,county,contact) VALUES(:reg,:userid,:fname,:lname,:email,:idno,:dob,:phone,:county,:contact)";
             $stmt = $this->db->prepare($sql);
 
             $stmt->bindparam(':reg', $reg);
+            $stmt->bindparam(':userid', $userid);
             $stmt->bindparam(':fname', $fname);
             $stmt->bindparam(':lname', $lname);
             $stmt->bindparam(':email', $email);
@@ -229,7 +230,7 @@ class crud
     public function getStudentDetails($id)
     {
         try {
-            $sql = "select * from student_details where reg=:id";
+            $sql = "select * from student_details where userid=:id";
             $stmt = $this->db->prepare($sql);
             $stmt->bindparam(':id', $id);
             $stmt->execute();
@@ -243,8 +244,8 @@ class crud
     public function editStudent($id, $reg, $fname, $lname, $email, $idno, $dob, $phone, $county, $contact)
     {
         try {
-            $sql = "UPDATE `student_details` SET `reg`= :reg,`fname`=:fname,`lname`=:lname,`email`=:email,`idno`=:idno,`dob`=:dob,`phone`=:phone,`county`=:county,`contact`=:contact, WHERE reg= :id";
-
+            $sql = "UPDATE `student_details` SET `reg`=:reg, `fname`=:fname, `lname`=:lname, `email`=:email, `idno`=:idno, `dob`=:dob, `phone`=:phone, `county`=:county, `contact`=:contact WHERE userid=:id";
+    
             $stmt = $this->db->prepare($sql);
             //bind all placeholders to the actual values
             $stmt->bindparam(':id', $id);
@@ -258,13 +259,11 @@ class crud
             $stmt->bindparam(':county', $county);
             $stmt->bindparam(':contact', $contact);
             //execute statement
-
-            //execute statement 
             $stmt->execute();
             return true;
         } catch (PDOException $e) {
-            echo $e->getmessage();
+            echo $e->getMessage();
             return false;
         }
     }
-}
+}    

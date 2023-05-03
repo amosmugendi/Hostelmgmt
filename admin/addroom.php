@@ -1,8 +1,8 @@
 <?php
 $title = "View Rooms";
-include_once 'db/conn.php';
-include_once 'includes/session.php';
-include_once 'includes/adminheader.php';
+include_once '../db/conn.php';
+include_once '../includes/session.php';
+include_once '../includes/adminheader.php';
 $result = $reports->getRooms();
 ?>
 
@@ -48,5 +48,5 @@ $result = $reports->getRooms();
 
 </section>
 <?php
-include_once 'includes/adminheader.php';
+include_once '../includes/adminheader.php';
 ?>

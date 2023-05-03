@@ -1,57 +1,11 @@
 <?php
 
-include_once 'db/conn.php';
-include_once 'includes/session.php';
-echo 'Welcome ' . $_SESSION['id'];
+include_once '../db/conn.php';
+include_once '../includes/session.php';
+include_once '../includes/studentheader.php';
+//echo 'Welcome ' . $_SESSION['id'];
 
 ?>
-<!DOCTYPE html>
-<html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Hostel Management Dashboard</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" />
-    <link rel="stylesheet" href="css/dashboards.css">
-    <script src="../js/script.js"></script>
-</head>
-
-<body>
-    <div class="container">
-        <nav>
-            <ul>
-                <li><a href="#" class="logo">
-                        <img SRC="" alt="">
-                        <span class="nav-item">Student DashBoard</span>
-                    </a></li>
-                <li><a href="#">
-                        <i class="fas fa-home"></i>
-                        <span class="nav-item">Home</span>
-                    </a></li>
-                <li><a href="#">
-                        <i class="fas fa-user"></i>
-                        <span class="nav-item">Profile</span>
-                    </a></li>
-                <li><a href="#">
-                        <i class="fas fa-chess-rook"></i>
-                        <span class="nav-item">Book Hostel</span>
-                    </a></li>
-                <li><a href="">
-                        <i class="fas fa-bed"></i>
-                        <span class="nav-item">Room Details</span>
-                    </a></li>
-                <li><a href="">
-                        <i class="fas fa-utensils"></i>
-                        <span class="nav-item">Food Menu</span>
-                    </a></li>
-                <li><a href="logout.php
-                " class="logout">
-                        <i class="fas fa-sign-out-alt"></i>
-                        <span class="nav-item">Logout </span>
-                    </a></li>
-            </ul>
-        </nav>
         <section class="main">
             <div class="main-top">
                 <h1>Profile</h1>
@@ -90,7 +44,7 @@ echo 'Welcome ' . $_SESSION['id'];
                             location.href = "bookroom.php";
                         }
                         document.getElementById("profbtn").onclick = function() {
-                            location.href = "viewrecords.php";
+                            location.href = "profile.php";
                         }
                         document.getElementById("foodbtn").onclick = function() {
                             location.href = "foodmenu.php";
@@ -100,7 +54,6 @@ echo 'Welcome ' . $_SESSION['id'];
                 </div>
             </div>
         </section>
-    </div>
-</body>
-
-</html>
+    <?php
+        include_once '../includes/adminfooter.php'
+    ?>

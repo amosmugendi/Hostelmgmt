@@ -1,10 +1,11 @@
 <?php
 include_once '../db/conn.php';
+session_start();
 
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     //extract values from the $_POST Array
     $current_date = date("Y-m-d");
-    $reg = $_POST['regno'];
+    $reg = $_SESSION['id'];
     $roomid = $_POST['roomid'];
     $roomtype = $_POST['room_type'];
 

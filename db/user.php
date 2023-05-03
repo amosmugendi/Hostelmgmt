@@ -46,6 +46,21 @@
                
              }
          }
+         public function getNewUser($email){
+
+            {try{ $sql="SELECT `id`,`role`,`email`, `password` FROM `users` WHERE email=:email";
+                $stmt= $this->db->prepare($sql);
+                $stmt->bindparam(':email',$email);                
+                $stmt->execute();
+                $result= $stmt->fetch();
+                return $result;
+                }catch(PDOException $e){
+                        echo $e->getmessage();
+                        return false;
+                    }
+               
+             }
+         }
          public function getUserbyemail($email){
             {try{ $sql="select count(*) as num from users where email=:email";
                 $stmt= $this->db->prepare($sql);
@@ -59,6 +74,20 @@
                         return false;
                     }
                
+             }
+         }
+         public function updatePassword($id,$np)
+         {
+             try {
+                 $sql = "UPDATE users SET password =:np WHERE id =:id";
+                 $stmt = $this->db->prepare($sql);
+                 $stmt->bindparam(':id', $id);
+                 $stmt->bindparam(':np', $np);
+                 $stmt->execute();
+                 return true;
+             } catch (PDOException $e) {
+                 echo $e->getmessage();
+                 return false;
              }
          }
     }

@@ -1,8 +1,8 @@
 <?php
 $title = "View Rooms";
-include_once 'db/conn.php';
-include_once 'includes/session.php';
-include_once 'includes/adminheader.php';
+include_once '../db/conn.php';
+include_once '../includes/session.php';
+include_once '../includes/adminheader.php';
 
 if (!isset($_GET['id'])) {
     echo "<h1 class='text-danger'>Please check details and try again</h1>";
@@ -11,7 +11,9 @@ if (!isset($_GET['id'])) {
     $result = $reports->getFoodDetails($id);;
 
 ?>
-  
+  <head>
+<link rel="stylesheet" href="../css/view.css">
+</head>
             <section class="main">
                 <!-- create a container to hold the room details-->
                 <div class="card" style="width: 18rem">
@@ -37,13 +39,13 @@ if (!isset($_GET['id'])) {
                 </div>
                 <br>
                 <td>
-                    <a href="viewfoods.php?id= <?php echo $result['food_id'] ?>" class="primary-button">Back to List</a>
-                    <a href="editfood.php?id= <?php echo $result['food_id'] ?>" class="warning-button">Edit</a>
-                    <a onclick="return confirm('are you sure you want to delete this record?');" href="delete.php?id= <?php echo $r['food_id'] ?>" class="delete-button">Delete</a>
+                <button type="button" class="primary-button small-button" onclick="window.location.href='viewfoods.php?id= <?php echo $result['food_id'] ?>'">Back to List</button>
+                    <button type="button" class="warning-button small-button" onclick="window.location.href='editfood.php?id= <?php echo $result['food_id'] ?>'">Edit</button>
+                    <button type="button" class="delete-button small-button" onclick="return confirm('are you sure you want to delete this meal?'); window.location.href='deletefood.php?id= <?php echo $result['food_id'] ?>'">Delete</button </td>
                 </td>
             <?php } ?>
 
             </section>
             <?php
-            include_once 'includes/adminfooter.php';
+            include_once '../includes/adminfooter.php';
             ?>

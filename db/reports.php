@@ -58,6 +58,21 @@ class reports
             return false;
         }
     }
+    public function getStudentRoomDetails($id)
+    {
+        try {
+            $sql = "SELECT * FROM rooms JOIN bookings ON rooms.id = bookings.roomid WHERE bookings.studentregno = :id"; 
+            // $sql = "select * from rooms where id=:id";
+            $stmt = $this->db->prepare($sql);
+            $stmt->bindparam(':id', $id);
+            $stmt->execute();
+            $result = $stmt->fetch();
+            return $result;
+        } catch (PDOException $e) {
+            echo $e->getmessage();
+            return false;
+        }
+    }
     public function getfoods()
     {
         try {

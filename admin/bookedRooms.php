@@ -1,11 +1,13 @@
 <?php
 
-include_once 'db/conn.php';
-include_once 'includes/session.php';
-include_once 'includes/adminheader.php';
+include_once '../db/conn.php';
+include_once '../includes/session.php';
+include_once '../includes/adminheader.php';
 $result = $reports->activeBookings();
 ?>
-
+<head>
+<link rel="stylesheet" href="../css/view.css">
+</head>
 
         <section class="main">
             <?php
@@ -37,5 +39,5 @@ $result = $reports->activeBookings();
         </section>
 
         <?php
-        include_once 'includes/adminfooter.php';
+        include_once '../includes/adminfooter.php';
         ?>

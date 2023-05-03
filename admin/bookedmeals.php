@@ -1,12 +1,14 @@
 <?php
 
-include_once 'db/conn.php';
-include_once 'includes/session.php';
-include_once 'includes/adminheader.php';
+include_once '../db/conn.php';
+include_once '../includes/session.php';
+include_once '../includes/adminheader.php';
 
 $result = $reports->activeFoodBookings();
 ?>
-
+<head>
+<link rel="stylesheet" href="../css/view.css">
+</head>
 
 <section class="main">
     <h1>List of All the Meals Booked</h1>
@@ -38,5 +40,5 @@ $result = $reports->activeFoodBookings();
 
 </section>
 <?php
-include_once 'includes/adminfooter.php';
+include_once '../includes/adminfooter.php';
 ?>

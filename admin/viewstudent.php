@@ -1,8 +1,8 @@
 <?php
 $title = "View Student";
 //include_once 'db/conn.php';
-include_once 'includes/session.php';
-include_once 'includes/adminheader.php';
+include_once '../includes/session.php';
+include_once '../includes/adminheader.php';
 
 
 if (!isset($_GET['id'])) {
@@ -12,7 +12,9 @@ if (!isset($_GET['id'])) {
     $result = $reports->getStudentDetails($id);
 
 ?>
-
+<head>
+<link rel="stylesheet" href="../css/view.css">
+</head>
     <section class="main">
         <!-- create a container to hold the room details-->
         <div class="card" style="width: 18rem">
@@ -53,12 +55,12 @@ if (!isset($_GET['id'])) {
         </div>
         <br>
         <td>
-            <a href="viewstudents.php?id= <?php echo $result['reg'] ?>" class="primary-button">Back to List</a>
-            <a href="editstudent.php?id= <?php echo $result['reg'] ?>" class="warning-button">Edit</a>
+            <button type="button" class="primary-button small-button" onclick="window.location.href='viewstudents.php?id= <?php echo $result['reg']?>'">Back to List</button>
+            <button type="button" class="warning-button small-button" onclick="window.location.href='editstudent.php?id= <?php echo $result['reg']?>'">Edit</button>
         </td>
     <?php } ?>
 
     </section>
     <?php
-    include_once 'includes/adminfooter.php';
+    include_once '../includes/adminfooter.php';
     ?>

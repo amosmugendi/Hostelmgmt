@@ -1,6 +1,9 @@
 <?php
-include_once '../db/conn.php' ;
+
+include_once '../db/conn.php';
 include_once '../includes/session.php';
+//echo 'Welcome ' . $_SESSION['id'];
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -8,17 +11,14 @@ include_once '../includes/session.php';
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title> Hostel <?php $title ?></title>
+    <title>Hostel Management Dashboard</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" />
+    <link rel="stylesheet" href="../css/dashboards.css">
     <link rel="stylesheet" href="../css/add.css">
-    <link rel="stylesheet" href="../css/bookform.css">
     <link rel="stylesheet" href="../css/dashboards.css">
     <link rel="stylesheet" href="../css/edit.css">
-    <link rel="stylesheet" href="/css/ex.css"> 
-    <link rel="stylesheet" href="/css/view.css">
-    <link rel="stylesheet" href="/css/login.css">
-    <link rel="stylesheet" href="/css/style.css">
-    <link rel="stylesheet" href="/css/index.css">
+    <link rel="stylesheet" href="../css/view.css">
+
 
     <script src="../js/script.js"></script>
 </head>
@@ -27,32 +27,34 @@ include_once '../includes/session.php';
     <div class="container">
         <nav class="nav">
             <ul>
-                <li><a href="admin.php" class="logo">
+                <li><a href="#" class="logo">
                         <img SRC="" alt="">
-                        <br>
-                        <span class="nav-item">Admin</span>
+                        <span class="nav-item">Student</span>
                     </a></li>
-                <li><a href="admin.php">
+                <li><a href="student.php">
                         <i class="fas fa-home"></i>
                         <span class="nav-item">Home</span>
                     </a></li>
-                <li><a href="viewstudents.php">
+                <li><a href="profile.php">
                         <i class="fas fa-user"></i>
-                        <span class="nav-item">Students</span>
+                        <span class="nav-item">Profile</span>
                     </a></li>
-                <li><a href="viewrooms.php">
+                <li><a href="activeroom.php">
+                        <i class="fas fa-chess-rook"></i>
+                        <span class="nav-item">Booked Room</span>
+                    </a></li>
+                <!--<li><a href="">
                         <i class="fas fa-bed"></i>
-                        <span class="nav-item">Rooms</span>
-                    </a></li>
-                <li><a href="viewfoods.php">
+                        <span class="nav-item">Room Details</span>
+                    </a></li>-->
+                <li><a href="activemeals.php">
                         <i class="fas fa-utensils"></i>
-                        <span class="nav-item">Foods</span>
+                        <span class="nav-item">Booked Meals</span>
                     </a></li>
-                <li><a href="../logout.php
+                <li><a href="logout.php
                 " class="logout">
                         <i class="fas fa-sign-out-alt"></i>
                         <span class="nav-item">Logout </span>
                     </a></li>
             </ul>
         </nav>
-    

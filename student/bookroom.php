@@ -1,35 +1,33 @@
  <?php
-    include_once 'db/conn.php';
-    include_once 'includes/session.php';
+    include_once '../db/conn.php';
+    include_once '../includes/session.php';
+    include_once '../includes/studentheader.php';
     ?>
 
- <head>
-     <link rel="stylesheet" href="css/bookform.css">
-     <link rel="stylesheet" href="css/style.css">
- </head>
- <section>
+ <section class="main">
+     <h1 class="text-center">Room Booking Form</h1>
      <div class="container">
-         <div class="title">Room Booking Form</div>
-         <form class="booking-form-container" action="controllers/booking.php" method="POST">
+
+         <form class="booking-form-container" action="../controllers/booking.php" method="POST">
+
              <label for="reg_number">Registration Number:</label>
-             <input type="text" id="reg_number" name="regno" required>
+             <input type="text" id="reg_number" name="regno" value="<?php echo($_SESSION['id']);?>">
              <br>
              <br>
              <br>
 
-                <label for="room_type">Room Category:</label>
-                <select id="room_type" name="room_type">
-                    <option value="">Selet type of room..</option>
-                    <option value="single">Single Room</option>
-                    <option value="shared">Sharing</option>
-                </select
-             <br>
+             <label for="room_type">Room Category:</label>
+             <select id="room_type" name="room_type">
+                 <option value="">Selet type of room..</option>
+                 <option value="single">Single Room</option>
+                 <option value="shared">Sharing</option>
+             </select <br>
              <br>
              <div id='rooms_list'></div>
              <br>
              <br>
-             <button type="submit">Book Now </button>
-             <button type="subit"><a onclick="return confirm('are you sure you want to cancel?');"href="student.php?id" type="submit">Cancel</a></button>
+             <button type="submit" class="primary-button small-button">Book Now </button>
+             <button type="subit"><a onclick="return confirm('are you sure you want to cancel?');" href="student.php?id" type="submit">Cancel</a></button>
 
          </form>
      </div>
@@ -42,7 +40,7 @@
 
                  // send an AJAX request to retrieve the list of rooms
                  $.ajax({
-                     url: "./controllers/get_rooms.php",
+                     url: "../controllers/get_rooms.php",
                      type: "POST",
                      data: {
                          room_type: room_type
@@ -93,7 +91,7 @@
              }
          });
      </script>
-    
+
 
 
  </section>

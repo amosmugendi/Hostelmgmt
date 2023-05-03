@@ -1,11 +1,11 @@
 <?php
 $title = "Edit Student";
-include_once 'db/conn.php';
-include_once 'includes/session.php';
-include_once 'includes/adminheader.php';
+include_once '../db/conn.php';
+include_once '../includes/session.php';
+include_once '../includes/adminheader.php';
 if (!isset($_GET['id'])) {
     //error messages 
-    include 'includes/errormessage.php';
+    include '../includes/errormessage.php';
     header("Location: viewstudents.php ");
 } else {
     $id = $_GET['id'];
@@ -16,7 +16,11 @@ if (!isset($_GET['id'])) {
                 <h1 class="text-center">Edit Student Details</h1>
 
                 <form method="post" action="studentedit.php">
-                    <input type="hidden" name="id" value="<?php echo $student['reg'] ?>" />
+                    <input type="hidden" name="id" value="<?php echo $student['userid'] ?>" />
+                    <!-- <div class="form-group">
+                        <label for="userid" class="form-label">User ID</label>
+                        <input type="text" class="form-control" value="<?php echo $student['userid'] ?>" id="userid" name="userid">
+                    </div> -->
                     <div class="form-group">
                         <label for="reg" class="form-label">Registration Number</label>
                         <input type="text" class="form-control" value="<?php echo $student['reg'] ?>" id="reg" name="reg">
@@ -27,7 +31,7 @@ if (!isset($_GET['id'])) {
                     </div>
                     <div class="form-group">
                         <label for="lname" class="form-label">Last Name</label>
-                        <input type="text" class="form-control" value="<?php echo $student['lname'] ?>" id="fname" name="fname">
+                        <input type="text" class="form-control" value="<?php echo $student['lname'] ?>" id="fname" name="lname">
                     </div>
                     <div class="form-group">
                         <label for="email" class="form-label">Email</label>
@@ -60,5 +64,5 @@ if (!isset($_GET['id'])) {
             <?php  } ?>
             </section>
             <?php
-            include_once 'includes/adminfooter.php';
+            include_once '../includes/adminfooter.php';
             ?>
