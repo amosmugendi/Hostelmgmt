@@ -63,13 +63,13 @@ class crud
             return false;
         }
     }
-    public function insertFood($food_id, $diet_type, $food, $Day)
+    public function insertFood($id, $diet_type, $food, $Day)
     {
         try {
             $sql = "INSERT INTO food_menu (food_id,diet_type,food,Day) VALUES(:food_id,:diet_type,:food,:Day)";
             $stmt = $this->db->prepare($sql);
 
-            $stmt->bindparam(':food_id', $food_id);
+            $stmt->bindparam(':food_id', $id);
             $stmt->bindparam(':diet_type', $diet_type);
             $stmt->bindparam(':food', $food);
             $stmt->bindparam(':Day', $Day);
@@ -82,13 +82,13 @@ class crud
             return false;
         }
     }
-    public function newfood($reg, $food_id, $date)
+    public function newfoodbooking($reg, $food_id, $date)
     {
         try {
             //check if entry with the same student exhist
 
 
-            $sql = "INSERT INTO `foodbookings` (`reg`,`food_id`, `date`)VALUES(:reg,:food_id,:date)";
+            $sql = "INSERT INTO foodbookings (food_id,reg, date) VALUES(:food_id,:reg,:date)";
             $stmt = $this->db->prepare($sql);
             //$stmt->bindparam(':food_id', $food_id);
             $stmt->bindparam(':reg', $reg);
@@ -217,7 +217,7 @@ class crud
     public function resetRoom($id)
     {
         try {
-            $sql = "UPDATE rooms SET status = 'empty' WHERE id =:id";
+            $sql = "UPDATE rooms SET `status` = 'empty' WHERE id =:id";
             $stmt = $this->db->prepare($sql);
             $stmt->bindparam(':id', $id);
             $stmt->execute();
@@ -267,3 +267,5 @@ class crud
         }
     }
 }    
+
+

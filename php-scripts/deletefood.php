@@ -1,5 +1,5 @@
 <?php 
-    require_once('db/conn.php');
+    require_once('../db/conn.php');
     if(!$_GET['id']){
         include('includes/errormessage.php');
         header("Location: viewrecords,php ");
@@ -11,7 +11,7 @@
         $result= $crud->deleteFood($id);
         //redirect
         if($result){
-            header("Location: viewFoods.php");
+            header("Location: ../admin/viewFoods.php");
         }
         else{
             echo '';

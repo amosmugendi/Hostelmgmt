@@ -20,49 +20,50 @@ if (!$_SESSION['id']) {
     if ($result) {
 ?>
 
-        <!-- <head>
-            <link rel="stylesheet" href="../css/view.css"> 
-        </head> -->
-        <section>
-            <div class="container">
-                
-                <div class="card" style="width: 18rem">
-                    <div class="card-body">
-                        <h5 class="card-title">
-                            Student Details
-                        </h5>
-                        <p class="Card-text">
-                            Registration Number: <?php echo $result['reg']; ?>
-                        </p>
-                        <p class="Card-text">
-                            First Name: <?php echo $result['fname']; ?>
-                        </p>
-                        <p class="card-text">
-                            Last Name: <?php echo $result['lname']; ?>
-                        </p>
-                        <p class="card-text">
-                            Email: <?php echo $result['email']; ?>
-                        </p>
-                        <p class="card-text">
-                            ID/Passport: <?php echo $result['idno']; ?>
-                        </p>
-                        <p class="card-text">
-                            Date of Birth: <?php echo $result['dob']; ?>
-                        </p>
-                        <p class="card-text">
-                            Phone Number: <?php echo $result['phone']; ?>
-                        </p>
-                        <p class="card-text">
-                            Home County: <?php echo $result['county']; ?>
-                        </p>
-                        <p class="card-text">
-                            Emergency Contact: <?php echo $result['contact']; ?>
-                        </p>
+        <head>
+            <link rel="stylesheet" href="../css/view.css">
+        </head>
+        <section class="main">
 
-                    </div>
+
+            <div class="card" style="width: 18rem">
+                <div class="card-body">
+                    <h5 class="card-title">
+                        Student Details
+                    </h5>
+                    <p class="Card-text">
+                        Registration Number: <?php echo $result['reg']; ?>
+                    </p>
+                    <p class="Card-text">
+                        First Name: <?php echo $result['fname']; ?>
+                    </p>
+                    <p class="card-text">
+                        Last Name: <?php echo $result['lname']; ?>
+                    </p>
+                    <p class="card-text">
+                        Email: <?php echo $result['email']; ?>
+                    </p>
+                    <p class="card-text">
+                        ID/Passport: <?php echo $result['idno']; ?>
+                    </p>
+                    <p class="card-text">
+                        Date of Birth: <?php echo $result['dob']; ?>
+                    </p>
+                    <p class="card-text">
+                        Phone Number: <?php echo $result['phone']; ?>
+                    </p>
+                    <p class="card-text">
+                        Home County: <?php echo $result['county']; ?>
+                    </p>
+                    <p class="card-text">
+                        Emergency Contact: <?php echo $result['contact']; ?>
+                    </p>
 
                 </div>
-                <!-- <form method="post" action="register.php">
+
+            </div>
+        </section>
+        <!-- <form method="post" action="register.php">
                     <input type="hidden" name="id" value="<?php echo $profile['reg'] ?>" />
                     <div class="user-details">
                         <div class="input-box">
@@ -125,11 +126,11 @@ if (!$_SESSION['id']) {
                         <p><a href="student.php"> Cancel</a></p>
                     </div>
                 </form> -->
-        <?php
+
+
+<?php
     } else {
         echo "No details found for this student.";
     }
 }
-        ?>
-            </div>
-        </section>
+?>

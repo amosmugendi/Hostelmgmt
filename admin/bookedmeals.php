@@ -17,7 +17,7 @@ $result = $reports->activeFoodBookings();
     echo "<tr>
                     <th>Booking ID</th>
                     <th>Food Id</th>
-                    <th>Student ID</th>
+                    <th>User ID</th>
                     <th>Booking Date</th>                   
                 </tr>";
     if (count($result) > 0) {

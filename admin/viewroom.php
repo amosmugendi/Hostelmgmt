@@ -44,8 +44,8 @@ if (!isset($_GET['id'])) {
         <br>
         <td>
             <button type="button" class="primary-button small-button" onclick="window.location.href='viewrooms.php?id= <?php echo $result['id']?>'">Back to List</button>
-            <button type="button" class="warning-button small-button" onclick="window.location.href='editrooms.php?id= <?php echo $result['id']?>'">Edit</button>
-            <button type="button" class="delete-button small-button" onclick="return confirm('are you sure you want to reset this room?'); window.location.href='delete.php?id= <?php echo $result['id'] ?>'">Reset</button>
+            <button class="warning-button small-button" onclick="window.location.href='editroom.php?id= <?php echo $result['id'] ?>'">Edit</button>
+            <button type="button" class="delete-button small-button" onclick="return confirm('are you sure you want to reset this room?') window.location.href='../php-scripts/delete.php?id= <?php echo $result['id'] ?>'">Reset</button>
         </td>
     <?php } ?>
 

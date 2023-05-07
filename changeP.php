@@ -1,39 +1,41 @@
+<?php
+include_once './db/conn.php';
+include_once './includes/session.php';
+echo 'you just landed mf';
+
+
+?>
+
+<head>
+  <Title>Password Validation</Title>
+</head>
 <?php 
- echo 'you made it this far champ';
-include_once 'db/conn.php';
-// session_start();
-// if(isset($_SESSION['id']) && isset($_SESSION['email'])){
-// echo ("You are here MF");
-if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-    $op = $_POST['op'];
-    $np= $_POST['np'];
-    //$cnp = $_POST['cnp'];
-    
-            //check if the fields are empty 
-            if(empty($op) || empty($cnp))
-            {
-                $error = 'Please fill all the fields.';
-        // check if the password match
-            }else if(empty($np !== $cnp)){
-                $error='Passwords do not match!';
-            }else{
-                //hashing the password
-                $op= md5($op);
-                $np= md5($np. $email);
-                $id= $_SESSION['id'];
-               
-                if(mysqli_num_rows($result)===1){
-                    echo "correct";
-                }else{
-                    header("Location: chage-password.php?error=Incorrect password");
-                    exit();
-                }
-            }
+//session_start();
+//collecting data from the log in form
+if (isset($_SESSION['id'])) {
+$oldp=$_POST['oldp'];
+$newp=$_POST['newp'];
+$confirmp=$_POST['confirmp'];
+$status="okay";
+$msg="";
 
-
-    }else{
-        echo 'requirements not met';
-        exit();
-    } 
-// } 
+$result = $users->checkPassword($id);
+if($result<>md5($oldp.$email)){
+  $status="NOTOK";
+  $msg .="Old password entered is incorrect<br>";
+  }
+  if(strlen($newp)<3 or strlen($newp)>8){
+    $status="NOTOK";
+    $msg .="password must be more than 3 and less than 8";
+    }
+    if($newp<>$confirmp){
+      $status="NOTOK";
+      $msg .="New Password does not match confirm password<br>";
+      }
+      if($status<>"OK"){
+        echo"<font color=red> $msg </font>";
+        }else{
+        echo "Validation is Okay";
+        }
+        }
 ?>

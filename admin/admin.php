@@ -48,7 +48,7 @@ require_once '../db/conn.php';
                     location.href = "bookedmeals.php";
                 }
                 document.getElementById("updatebtn").onclick = function() {
-                    location.href = "viewrooms.php";
+                    location.href = "update.php";
                 }
             </script>
         </div>

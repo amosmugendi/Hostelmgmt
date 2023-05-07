@@ -29,10 +29,10 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     if (isset($crud) && method_exists($crud, 'newBooking')) {
         $isSuccess = $crud->newBooking($reg, $roomid, $current_date, $roomstatus);
         if ($isSuccess) {
-            session_start();
+            // session_start();
             $_SESSION["success"] = "Booking Successfull";
             //echo 'operation successful';
-            header("Location: ../bookroom.php");
+            header("Location: ../student/bookroom.php");
         } else {
             echo 'an error occurred please try again';
         }

@@ -43,3 +43,25 @@ CREATE TABLE foodbookings (
   date DATE
 );
 
+ALTER TABLE foodbookings
+ADD FOREIGN KEY (food_id)
+REFERENCES food_menu(food_id);
+
+ALTER TABLE foodbookings
+MODIFY COLUMN food_id INT NOT NULL;
+
+UPDATE rooms SET status = 'empty' WHERE id = 1;
+
+ UPDATE users SET password='$hashedPassword' WHERE id=$userId";
+
+--  Disable the foreign key constraint
+ALTER TABLE bookings
+DISABLE CONSTRAINT roomid;
+
+DELETE FROM rooms
+WHERE id IN (18,20,21,19)
+AND NOT EXISTS (
+   SELECT *
+   FROM bookings
+   WHERE bookings.roomid = rooms.id
+);

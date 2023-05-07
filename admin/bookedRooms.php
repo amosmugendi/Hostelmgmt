@@ -15,7 +15,7 @@ $result = $reports->activeBookings();
             echo "<tr>
                     <th>Booking ID</th>
                     <th>Room Number</th>
-                    <th>Student ID</th>
+                    <th>User ID</th>
                     <th>Booking Date</th>                   
                 </tr>";
             if (count($result) > 0) {

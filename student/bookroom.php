@@ -3,14 +3,16 @@
     include_once '../includes/session.php';
     include_once '../includes/studentheader.php';
     ?>
-
+<head>
+    <link rel="stylesheet" href="../css/view.css">
+</head>
  <section class="main">
      <h1 class="text-center">Room Booking Form</h1>
      <div class="container">
 
          <form class="booking-form-container" action="../controllers/booking.php" method="POST">
 
-             <label for="reg_number">Registration Number:</label>
+             <label for="reg_number">User ID:</label>
              <input type="text" id="reg_number" name="regno" value="<?php echo($_SESSION['id']);?>">
              <br>
              <br>

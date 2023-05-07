@@ -33,6 +33,20 @@ class reports
             return false;
         }
     }
+    public function getStudentfoodDetails($id)
+    {
+        try {
+            $sql = "SELECT * FROM food_menu JOIN foodbookings ON food_menu.food_id = foodbookings.food_id WHERE foodbookings.reg = :id";
+            $stmt = $this->db->prepare($sql);
+            $stmt->bindparam(':id', $id); 
+            $stmt->execute();
+            $result = $stmt->fetchAll(); // fetch all rows
+            return $result;
+        } catch (PDOException $e) {
+            echo $e->getMessage();
+            return false;
+        }
+    }
     public function getRooms()
     {
         try {

@@ -1,5 +1,5 @@
 <?php
-    require_once 'db/conn.php';
+    require_once '../db/conn.php';
 
     if($_SERVER['REQUEST_METHOD']=='POST'){
         //extract values from the $_POST Array
@@ -14,7 +14,7 @@
 
         if($isSuccess){
            echo 'Operation Sucessful';
-           header('Location:viewrooms.php');
+           header('Location: ../admin/viewrooms.php');
             
         }else{
             echo 'an error occured please try again';

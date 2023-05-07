@@ -15,7 +15,7 @@ if (!isset($_GET['id'])) {
         <section class="main">
         <h1 class="text-center">Edit Room Details</h1>
 
-        <form method="post" action="roomedit.php">
+        <form method="post" action="../php-scripts/roomedit.php">
             <input type="hidden" name="id" value="<?php echo $rooms['id'] ?>" />
             <div class="form-group">
             <label for="room_type">Room Type</label>

@@ -1,5 +1,5 @@
 <?php
-require_once 'db/conn.php';
+require_once '../db/conn.php';
 
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $email = $_POST['email'];
@@ -29,7 +29,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
         if ($isSuccess) {
             echo 'Operation Sucessful';
-            header('Location:index.php');
+            header('Location:../admin/viewstudents.php');
         } else {
             echo 'an error occured please try again';
         }

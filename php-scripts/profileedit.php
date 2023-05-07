@@ -19,7 +19,7 @@ use LDAP\Result;
     $result=$crud->editStudent($id,$reg,$fname, $lname, $email, $idno, $dob, $phone, $county, $contact);
     //Redirect to viewrecords.php
     if($result){
-        header("Location: ../admin/viewstudents.php");
+        header("Location: ../student/student.php");
     }
     }
     else{

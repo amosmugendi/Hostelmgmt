@@ -7,7 +7,7 @@ $result = $reports->getRooms();
 ?>
 
 <section class="main">
-    <form action="roomaddition.php " method="post">
+    <form action="../php-scripts/roomaddition.php" method="post">
         <label for="room_type">Room Type:</label>
         <select id="room_type" name="room_type" required>
             <option value=""></option>

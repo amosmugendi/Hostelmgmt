@@ -17,7 +17,7 @@ include_once '../includes/session.php';
     <link rel="stylesheet" href="../css/add.css">
     <link rel="stylesheet" href="../css/dashboards.css">
     <link rel="stylesheet" href="../css/edit.css">
-    <link rel="stylesheet" href="../css/view.css">
+    
 
 
     <script src="../js/script.js"></script>
@@ -51,7 +51,7 @@ include_once '../includes/session.php';
                         <i class="fas fa-utensils"></i>
                         <span class="nav-item">Booked Meals</span>
                     </a></li>
-                <li><a href="logout.php
+                <li><a href="../logout.php
                 " class="logout">
                         <i class="fas fa-sign-out-alt"></i>
                         <span class="nav-item">Logout </span>

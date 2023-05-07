@@ -1,7 +1,7 @@
 <?php
 include_once '../db/conn.php';
 include_once '../includes/session.php';
-include_once '../includes/studentheader.php';
+include_once '../includes/adminheader.php';
 ?>
     <head>
     <link rel="stylesheet" href="../registration.css">
@@ -10,7 +10,7 @@ include_once '../includes/studentheader.php';
         <h1 class="text-center">Student Resigistration Form </h1>
    <div class="container">
     <div class="title"></div>
-    <form method="post" action="register.php">
+    <form method="post" action="../php-scripts/register.php">
         <div class="user-details">
             <div class="input-box">
                 <span class="details">Registration Number</span>
@@ -54,7 +54,7 @@ include_once '../includes/studentheader.php';
             <input type="submit" value="Submit" class="submit">
         </div>
         <div class="login-register">
-                    <p><a href="student.php" > Cancel</a></p>
+                    <p><a href="admin.php" > Cancel</a></p>
                 </div>
     </form>
    </div>

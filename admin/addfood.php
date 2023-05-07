@@ -7,9 +7,9 @@ $result = $reports->getfoods();
 ?>
 
 <section class="main">
-    <form action="foodaddition.php " method="post">
-        <label for="food_id">Food ID:</label>
-        <input type="text" id="food_id" name="food_id" required><br>
+    <form action="../php-scripts/foodaddition.php " method="post">
+        <!-- <label for="food_id">Food ID:</label>
+        <input type="text" id="food_id" name="food_id" required><br> -->
         <label for="diet_type">Diet Type:</label>
         <select id="diet_type" name="diet_type" required>
             <option value=""></option>

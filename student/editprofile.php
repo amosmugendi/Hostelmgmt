@@ -2,11 +2,11 @@
 $title = "Edit Student";
 include_once '../db/conn.php';
 include_once '../includes/session.php';
-include_once '../includes/adminheader.php';
+include_once '../includes/studentheader.php';
 if (!isset($_GET['id'])) {
     //error messages 
     include '../includes/errormessage.php';
-    header("Location: viewstudents.php ");
+    header("Location: ./index.php ");
 } else {
     $id = $_GET['id'];
     $student = $reports->getStudentDetails($id);
@@ -15,7 +15,7 @@ if (!isset($_GET['id'])) {
             <section class="main">
                 <h1 class="text-center">Edit Student Details</h1>
 
-                <form method="post" action="../php-scripts/studentedit.php">
+                <form method="post" action="../php-scripts/profileedit.php">
                     <input type="hidden" name="id" value="<?php echo $student['userid'] ?>" />
                     <!-- <div class="form-group">
                         <label for="userid" class="form-label">User ID</label>

@@ -1,51 +1,49 @@
-<?php 
-$title = "Booked Meals";
-//include_once 'db/conn.php';
+<?php
+$title = "Booked Food";
 include_once '../includes/session.php';
 include_once '../includes/studentheader.php';
 
 if (!$_SESSION['id']) {
     echo "<h1 class='text-danger'>Please check details and try again</h1>";
-}  
- else {  
+} else {
     // Get the ID of the current logged-in student
     $id = $_SESSION['id'];
 
-    // Fetch the details of the room that the student has booked
-    $result = $reports->getStudentFoodDetails($id);
+    // Fetch the details of the meals that the student has booked
+    $result = $reports->getStudentfoodDetails($id);
 
     // Check if the query returned any results
     if ($result) {
 ?>
+<head>
+            <link rel="stylesheet" href="../css/view.css">
+        </head>
     <section class="main">
-        <!-- create a container to hold the room details-->
-        <div class="card" style="width: 18rem">
-        <div class="card-body">
-                        <h5 class="card-title">
-                            Room Details
-                        </h5>
-                        <p class="Card-text">
-                            Food ID: <?php echo $result['food_id']; ?>
-                        </p>
-                        <p class="Card-text">
-                            Room Type: <?php echo $result['diet_type']; ?>
-                        </p>
-                        <p class="card-text">
-                            food: <?php echo $result['food']; ?>
-                        </p>
-                        <p class="card-text">
-                            Day: <?php echo $result['Day']; ?>
-                        </p>
-
-                    </div>
-        </div>
+        <h1>My Booked Meals</h1>
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>Food ID</th>
+                    <th>Food Type</th>
+                    <th>Food</th>
+                    <th>Day</th>
+                </tr>
+            </thead>
+            <tbody>
+                <?php foreach ($result as $row) { ?>
+                    <tr>
+                        <td><?php echo $row['food_id']; ?></td>
+                        <td><?php echo $row['diet_type']; ?></td>
+                        <td><?php echo $row['food']; ?></td>
+                        <td><?php echo $row['Day']; ?></td>
+                    </tr>
+                <?php } ?>
+            </tbody>
+        </table>
     </section>
-
 <?php
     } else {
-        echo "No room details found for this student.";
+        echo "No Food details found for this student.";
     }
 }
 ?>
-            
-           
