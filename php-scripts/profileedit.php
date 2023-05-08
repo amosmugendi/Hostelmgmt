@@ -21,7 +21,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $result = $crud->editStudent($id, $reg, $fname, $lname, $email, $idno, $dob, $phone, $county, $contact);
     //Redirect to viewrecords.php
     if ($result) {
-        echo ("<script>alert(\"Records updated Successfully!\"); </script>");
+        echo ("<script>alert('Records updated Successfully!'); </script>");
 
         header("Location: ../student/student.php");
     }
