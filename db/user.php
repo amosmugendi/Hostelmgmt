@@ -48,12 +48,12 @@ class users
             }
         }
     }
-    public function getNewUser($email)
+    public function getNewUser($id)
     { {
             try {
-                $sql = "SELECT `id`,`role`,`email`, `password` FROM `users` WHERE email=:email";
+                $sql = "SELECT `password` FROM `users` WHERE id=:sessionId";
                 $stmt = $this->db->prepare($sql);
-                $stmt->bindparam(':email', $email);
+                $stmt->bindparam(':sessionId', $id);
                 $stmt->execute();
                 $result = $stmt->fetch();
                 return $result;

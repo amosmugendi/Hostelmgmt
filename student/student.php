@@ -3,7 +3,22 @@
 include_once '../db/conn.php';
 include_once '../includes/session.php';
 include_once '../includes/studentheader.php';
-// echo 'Welcome ' . $_SESSION['fname'];
+
+//check if user uses the default password:
+$userid = $_SESSION['id'];
+$usr = $users->getNewUser($userid);
+if (!$usr) {
+    echo ("You are not logged in!!!");
+} else {
+    $defaultPass = "password";
+    $mdPassword = md5($defaultPass . $_SESSION['email']);
+    ///change password
+    if ($usr['password'] == $mdPassword) {
+        echo("You are here MF");
+        header("Location: ../changepass.php");
+    }
+}
+
 
 ?>
 <section class="main">
@@ -36,24 +51,22 @@ include_once '../includes/studentheader.php';
             <p>Make sure your personal details are up-to-date</p>
             <button id="updatebtn">Update</button>
         </div>
-        
-            <script>
-                //script to acctivate buttons on the student pannel 
-                document.getElementById("bookbtn").onclick = function() {
-                    location.href = "bookroom.php";
-                }
-                document.getElementById("profbtn").onclick = function() {
-                    location.href = "profile.php";
-                }
-                document.getElementById("foodbtn").onclick = function() {
-                    location.href = "foodmenu.php";
-                }
-                document.getElementById("updatebtn").onclick = function() {
-                    location.href = "editprofile.php";
-                }
-                
 
-            </script>
-    
+        <script>
+            //script to acctivate buttons on the student pannel 
+            document.getElementById("bookbtn").onclick = function() {
+                location.href = "bookroom.php";
+            }
+            document.getElementById("profbtn").onclick = function() {
+                location.href = "profile.php";
+            }
+            document.getElementById("foodbtn").onclick = function() {
+                location.href = "foodmenu.php";
+            }
+            document.getElementById("updatebtn").onclick = function() {
+                location.href = "editprofile.php";
+            }
+        </script>
+
     </div>
 </section>
