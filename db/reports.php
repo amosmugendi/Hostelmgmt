@@ -127,7 +127,7 @@ class reports
     public function getStudentDetails($id)
     {
         try {
-            $sql = "select * from student_details where reg=:id";
+            $sql = "select * from student_details where userid=:id";
             $stmt = $this->db->prepare($sql);
             $stmt->bindparam(':id', $id);
             $stmt->execute();

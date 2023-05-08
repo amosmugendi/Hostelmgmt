@@ -11,6 +11,11 @@ if (isset($_SESSION['id'])) {    // prevent user from going to index page
         header("Location: ./student.php");
     }
 }
+?>
+<script>
+    onclick="window.location='index.php'"
+</script>
+<?php
 
 
 //include_once 'includes/header.php';
@@ -24,13 +29,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $result = $users->getUser($email, $new_password);
     if (!$result) {
         echo '<div>Email or password is incorrect! please try again.</div>';} 
-    // else {
-    //     $pass = "password";
-    //     $change_pass = md5($pass . $email);
-    //     //change password
-    //         if ($result['password'] == $change_pass) {
-    //             header("Location:changepass.php");
-    //     } 
+    
     else{
             $_SESSION['email'] = $email;
             $_SESSION['id'] = $result['id'];

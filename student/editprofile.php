@@ -3,12 +3,9 @@ $title = "Edit Student";
 include_once '../db/conn.php';
 include_once '../includes/session.php';
 include_once '../includes/studentheader.php';
-if (!isset($_GET['id'])) {
-    //error messages 
-    include '../includes/errormessage.php';
-    header("Location: ./index.php ");
-} else {
-    $id = $_GET['id'];
+include '../includes/errormessage.php';
+if ($_SESSION['id']) {    
+    $id = $_SESSION['id'];
     $student = $reports->getStudentDetails($id);
 ?>
   
