@@ -6,7 +6,8 @@ include_once '../includes/studentheader.php';
 
 //check if user uses the default password:
 $userid = $_SESSION['id'];
-$usr = $users->getNewUser($userid);
+$userEmail = $_SESSION['email'];
+$usr = $users->getNewUser($userEmail);
 if (!$usr) {
     echo ("You are not logged in!!!");
 } else {

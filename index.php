@@ -25,8 +25,8 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $email = strtolower(trim($_POST['email']));
     $password = $_POST['password'];
     $new_password = md5($password . $email);
-
     $result = $users->getUser($email, $new_password);
+    // echo($new_password);
     if (!$result) {
         echo '<div>Email or password is incorrect! please try again.</div>';} 
     

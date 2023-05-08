@@ -16,7 +16,7 @@ if ($_SESSION['id']) {
                     <input type="hidden" name="id" value="<?php echo $student['userid'] ?>" />
                     <!-- <div class="form-group">
                         <label for="userid" class="form-label">User ID</label>
-                        <input type="text" class="form-control" value="<?php echo $student['userid'] ?>" id="userid" name="userid">
+                        <input type="text" class="form-control" value="<?php echo $student['userid'] ?>" id="userid" name="userid"> 
                     </div> -->
                     <div class="form-group">
                         <label for="reg" class="form-label">Registration Number</label>
