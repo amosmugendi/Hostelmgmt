@@ -10,6 +10,7 @@ class users
     public function insertUser($email, $password)
     {
         try {
+
             $result = $this->getUserbyemail($email);
             if ($result['num'] > 0) {
                 return false;
@@ -22,10 +23,9 @@ class users
                 //bind all placeholders to the actual values
                 $stmt->bindparam(':email', $email);
                 $stmt->bindparam(':password', $new_password);
-
                 //execute statement 
                 $stmt->execute();
-                return true;
+                return $stmt;
             }
         } catch (PDOException $e) {
             echo $e->getmessage();
@@ -49,37 +49,34 @@ class users
         }
     }
     public function getNewUser($id)
-    { {
-            try {
-                $sql = "SELECT `password` FROM `users` WHERE id=:sessionId";
-                $stmt = $this->db->prepare($sql);
-                $stmt->bindparam(':sessionId', $id);
-                $stmt->execute();
-                $result = $stmt->fetch();
-                return $result;
-            } catch (PDOException $e) {
-                echo $e->getmessage();
-                return false;
-            }
+    {
+        try {
+            $sql = "SELECT * FROM `users` WHERE email=:sessionId";
+            $stmt = $this->db->prepare($sql);
+            $stmt->bindparam(':sessionId', $id);
+            $stmt->execute();
+            $result = $stmt->fetch();
+            return $result;
+        } catch (PDOException $e) {
+            echo $e->getmessage();
+            return false;
         }
     }
     public function getUserbyemail($email)
-    { {
-            try {
-                $sql = "select count(*) as num from users where email=:email";
-                $stmt = $this->db->prepare($sql);
-                $stmt->bindparam(':email', $email);
-
-                $stmt->execute();
-                $result = $stmt->fetch();
-                return $result;
-            } catch (PDOException $e) {
-                echo $e->getmessage();
-                return false;
-            }
+    {
+        try {
+            $sql = "select count(*) as num from users where email=:email";
+            $stmt = $this->db->prepare($sql);
+            $stmt->bindparam(':email', $email);
+            $stmt->execute();
+            $result = $stmt->fetch();
+            return $result;
+        } catch (PDOException $e) {
+            echo $e->getmessage();
+            return false;
         }
-    }
-    public function updatePassword($id,$email, $newp)
+    }    
+    public function updatePassword($id, $email, $newp)
     {
         try {
             $new_password = md5($newp . $email);

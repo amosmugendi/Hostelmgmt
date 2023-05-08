@@ -12,7 +12,6 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         echo 'Registration Was Successful please head to login page';
         $result = $users->getNewUser($email);
         $userid = $result['id'];
-
         //extract values from the $_POST Array
         $reg = $_POST['regno'];
         // $user_id= $userid;
@@ -29,7 +28,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
         if ($isSuccess) {
             echo 'Operation Sucessful';
-            header('Location:../admin/viewstudents.php');
+            header('Location: ../admin/viewstudents.php');
         } else {
             echo 'an error occured please try again';
         }
