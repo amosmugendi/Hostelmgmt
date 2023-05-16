@@ -1,11 +1,10 @@
 <?php 
     require_once('../db/conn.php');
     require_once('../includes/session.php');
-    if(!$_GET['id']){
-        include('includes/errormessage.php');
-        header("Location: ../admin/viewrooms.php ");
-    }
-    else{
+    require_once '../includes/session.php';
+
+
+    if (isset($_GET['submit'])){
         //get id values 
         $id=$_GET['id'];
         //call reset function

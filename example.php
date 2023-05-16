@@ -9,38 +9,48 @@ if (!$_SESSION['id']) {
     // Get the ID of the current logged-in student
     $id = $_SESSION['id'];
 
-    // Fetch the details of the meals that the student has booked
-    $result = $reports->getStudentfoodDetails($id);
+    // Check if the search query was submitted
+    if (isset($_GET['search']) && !empty($_GET['search'])) {
+        $search = $_GET['search'];
+
+        // Fetch the details of the meals that the student has booked matching the search term
+        $result = $reports->searchStudentFoodDetails($id, $search);
+    } else {
+        // Fetch all the details of the meals that the student has booked
+        $result = $reports->getStudentfoodDetails($id);
+    }
 
     // Check if the query returned any results
     if ($result) {
 ?>
 <head>
-<link rel="stylesheet" href="../css/view.css">
+    <link rel="stylesheet" href="../css/view.css">
 </head>
     <section class="main">
-        <?php foreach ($result as $row) { ?>
-        <!-- create a container to hold the food details-->
-        <div class="card" style="width: 18rem">
-            <div class="card-body">
-                <h5 class="card-title">
-                    Food Details
-                </h5>
-                <p class="Card-text">
-                    Food ID: <?php echo $row['food_id']; ?>
-                </p>
-                <p class="Card-text">
-                    Food Type: <?php echo $row['diet_type']; ?>
-                </p>
-                <p class="card-text">
-                    Food: <?php echo $row['food']; ?>
-                </p>
-                <p class="card-text">
-                    Day: <?php echo $row['Day']; ?>
-                </p>
-            </div>
-        </div>
-        <?php } ?>
+        <form class="form-inline mb-3" action="../controllers/searchfood.php" method="GET">
+            <input class="form-control mr-sm-2" type="search" placeholder="Search by Food ID" aria-label="Search" name="search">
+            <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+        </form>
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>Food ID</th>
+                    <th>Food Type</th>
+                    <th>Food</th>
+                    <th>Day</th>
+                </tr>
+            </thead>
+            <tbody>
+                <?php foreach ($result as $row) { ?>
+                    <tr>
+                        <td><?php echo $row['food_id']; ?></td>
+                        <td><?php echo $row['diet_type']; ?></td>
+                        <td><?php echo $row['food']; ?></td>
+                        <td><?php echo $row['Day']; ?></td>
+                    </tr>
+                <?php } ?>
+            </tbody>
+        </table>
     </section>
 <?php
     } else {
@@ -48,3 +58,9 @@ if (!$_SESSION['id']) {
     }
 }
 ?>
+
+<main>
+    <h1>Welcome to Hostel Management</h1>
+    <p>Our hostel is located in the heart of the city and offers affordable and comfortable accommodations for students. Our hostel features:</p>
+
+</main>

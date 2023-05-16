@@ -27,8 +27,8 @@ include_once '../includes/session.php';
     <div class="container">
         <nav class="nav">
             <ul>
-                <li><a href="#" class="logo">
-                        <img SRC="" alt="">
+                <li><a href="student.php" class="logo">
+                        <img SRC="../pictures/logo.png" alt="">
                         <span class="nav-item">Student</span>
                     </a></li>
                 <li><a href="student.php">

@@ -27,24 +27,24 @@ include_once '../includes/session.php';
     <div class="container">
         <nav class="nav">
             <ul>
-                <li><a href="admin.php" class="logo">
-                        <img SRC="" alt="">
+                <li><a href="../admin/admin.php" class="logo">
+                        <img SRC="../pictures/logo.png" alt="">
                         <br>
                         <span class="nav-item">Admin</span>
                     </a></li>
-                <li><a href="admin.php">
+                <li><a href="../admin/admin.php">
                         <i class="fas fa-home"></i>
                         <span class="nav-item">Home</span>
                     </a></li>
-                <li><a href="viewstudents.php">
+                <li><a href="../admin/viewstudents.php">
                         <i class="fas fa-user"></i>
                         <span class="nav-item">Students</span>
                     </a></li>
-                <li><a href="viewrooms.php">
+                <li><a href="../admin/viewrooms.php">
                         <i class="fas fa-bed"></i>
                         <span class="nav-item">Rooms</span>
                     </a></li>
-                <li><a href="viewfoods.php">
+                <li><a href="../admin/viewfoods.php">
                         <i class="fas fa-utensils"></i>
                         <span class="nav-item">Foods</span>
                     </a></li>

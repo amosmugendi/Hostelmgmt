@@ -6,7 +6,7 @@ include_once '../includes/studentheader.php';
 include '../includes/errormessage.php';
 if ($_SESSION['id']) {    
     $id = $_SESSION['id'];
-    $student = $reports->getStudentDetails($id);
+    $student = $reports->getProfileDetails($id);
 ?>
   
             <section class="main">
@@ -56,7 +56,7 @@ if ($_SESSION['id']) {
                     </div>
 
                     <button type="submit " name="save" class="btn">save changes</button>
-                    <a onclick="return confirm('are you sure you want to cancel?')" ; href="viewstudents.php"> Cancel</a>
+                    <a onclick="return confirm('are you sure you want to cancel?')" ; href="student.php"> Cancel</a>
                 </form>
             <?php  } ?>
             </section>

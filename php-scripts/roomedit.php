@@ -1,9 +1,9 @@
 <?php 
     require_once('../db/conn.php');
     //get values from post operation
-    if(isset($_POST['submit'])){
+    if ($_SERVER['REQUEST_METHOD'] == 'POST'){
         //extract values from the $_POST array
-        //$id=$_POST['id'];
+        $id=$_POST['id'];
         $room_type=$_POST['room_type'];
         $fee=$_POST['fee'];
         $max_occupants=$_POST['max_occupants'];

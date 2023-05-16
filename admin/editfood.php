@@ -15,7 +15,7 @@ if (!isset($_GET['id'])) {
         <section class="main">
         <h1 class="text-center">Edit Room Details</h1>
 
-        <form method="post" action="foodedit.php">
+        <form method="post" action="../php-scripts/foodedit.php">
             <input type="hidden" name="id" value="<?php echo $foods['food_id'] ?>" />
             <div class="form-group">
                 <label for="food_d" class="form-label">Food ID</label>
@@ -23,11 +23,7 @@ if (!isset($_GET['id'])) {
                 </div>
             <div class="form-group">
             <label for="diet_type">Diet type</label>
-            <select id="diet_type" name="diet_type" value="<?php echo $foods['diet_type'] ?>" required>
-                <option value="<?php echo $foods['diet_type'] ?>">Select Diet Type</option>
-                <option value="single">Special</option>
-                <option value="Shared">Normal</option>
-            </select><br>
+            <input type="text" id="diet_type" name="diet_type" value="<?php echo $foods['diet_type'] ?>" required>
             </div>
             <div class="form-group">
                 <label for="food" class="form-label">Food</label>

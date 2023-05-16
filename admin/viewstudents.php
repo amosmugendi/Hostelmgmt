@@ -9,19 +9,26 @@ $result = $reports->getStudent();
 ?>
 <head>
 <link rel="stylesheet" href="../css/view.css">
+<link rel="stylesheet" href="../css/search.css">
+
 </head>
         <section class="main">
         <h1 class="text-center">List of Registered Students</h1>
+        <form action="../controllers/searchstudent.php" method="post" class="search-container">
+        <input class="form-control" type="search" placeholder="Search by registration number" aria-label="Search" name="search" require>
+        <button class="primary-button small-button" type="submit"  name="submit">Search</button><br>
+    </form>
         <table>
                  <tr>
                     
                     <th>Regno</th>
                     <th>First Name</th>
                     <th>Last Name</th>
-                    <th>Email</th>   
+                    <th>Email</th>  
+                     
                     <th>
                         <button class="primary-button small-button" onclick="window.location.href='registration.php'">Add Student</button>
-                    </th>              
+                    </th>           
                  </tr>
                 <?php 
                 while ($r=$result->fetch(PDO::FETCH_ASSOC)) {?>

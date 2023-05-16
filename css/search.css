@@ -1,0 +1,31 @@
+.search-container {
+    width: 300px;
+    display: flex;
+    justify-content: flex-end;
+    padding: 0;
+}
+
+.search-container form {
+    display: flex;
+    flex-direction: row;
+    float: right;
+    width: 300px;
+}
+
+.search-container button {
+    flex-shrink: 0;
+    display: inline-block;
+}
+  
+.search-container form input {
+    padding: 0;
+    flex-grow: 1;
+    margin-right: 10px;
+    width: 300px;
+  }
+
+  
+  
+  
+  
+  

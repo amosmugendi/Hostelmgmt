@@ -6,10 +6,17 @@ include_once '../includes/adminheader.php';
 
 $result = $reports->getRooms();
 ?>
+
 <head>
-<link rel="stylesheet" href="../css/view.css">
+    <link rel="stylesheet" href="../css/view.css">
+    <link rel="stylesheet" href="../css/search.css">
 </head>
 <section class="main">
+    <h1>List of Rooms</h1>
+    <form action="../controllers/searchroom.php" method="post" class="search-container">
+        <input class="form-control" type="search" placeholder="Search by RoomID" aria-label="Search" name="search" require>
+        <button class="primary-button small-button" type="submit"  name="submit">Search</button><br>
+    </form>
     <table>
         <tr>
             <th>Room ID</th>
@@ -29,9 +36,7 @@ $result = $reports->getRooms();
                 <td>
                     <button class="primary-button small-button" onclick="window.location.href='viewroom.php?id= <?php echo $r['id'] ?>'">view</button>
                     <button class="warning-button small-button" onclick="window.location.href='editroom.php?id= <?php echo $r['id'] ?>'">Edit</button>
-                    <!-- <button class="delete-button small-button" onclick="window.location.href='delete.php?id= <?php echo $r['id'] ?>'">Delete</button> -->
-                    <button class="delete-button small-button" onclick="return confirm('are you sure you want to reset this room?'); window.location.href='delete.php?id= <?php echo $r['id'] ?>'">Reset</button>
-                    <!-- <a onclick="return confirm('are you sure you want to reset this room?');" href="delete.php?id= <?php echo $r['id'] ?>">Reset</a> -->
+                    <button class="delete-button small-button" name="submit" onclick="return confirm('are you sure you want to reset this room?'); window.location.href='delete.php?id= <?php echo $r['id'] ?>'">Reset</button>
                 </td>
             </tr>
         <?php } ?>

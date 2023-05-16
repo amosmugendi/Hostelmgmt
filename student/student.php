@@ -15,7 +15,6 @@ if (!$usr) {
     $mdPassword = md5($defaultPass . $_SESSION['email']);
     ///change password
     if ($usr['password'] == $mdPassword) {
-        echo("You are here MF");
         header("Location: ../changepass.php");
     }
 }

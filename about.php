@@ -13,13 +13,9 @@ if (isset($_SESSION['id'])) {    // prevent user from going to index page
 }
 ?>
 <script>
-    onclick="window.location='index.php'"
+    onclick = "window.location='index.php'"
 </script>
 <?php
-
-
-//include_once 'includes/header.php';
-
 
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $email = strtolower(trim($_POST['email']));
@@ -28,35 +24,51 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $result = $users->getUser($email, $new_password);
     // echo($new_password);
     if (!$result) {
-        echo '<div>Email or password is incorrect! please try again.</div>';} 
-    
-    else{
-            $_SESSION['email'] = $email;
-            $_SESSION['id'] = $result['id'];
-            $_SESSION['role'] = $result['role'];
+        echo '<div>Email or password is incorrect! please try again.</div>';
+    } else {
+        $_SESSION['email'] = $email;
+        $_SESSION['id'] = $result['id'];
+        $_SESSION['role'] = $result['role'];
 
-            if ($result['role'] == 'admin') {
-                header("Location: admin/admin.php");
-            } elseif ($result['role'] == 'web_user') {
-                header("Location: student/student.php");
-            }
+        if ($result['role'] == 'admin') {
+            header("Location: admin/admin.php");
+        } elseif ($result['role'] == 'web_user') {
+            header("Location: student/student.php");
         }
     }
+}
 
 ?>
 
 <head>
-    <link rel="stylesheet" href="css/land.css">
-   
+    <link rel="stylesheet" href="./css/land.css">
 </head>
-<main>
-    <h1>Welcome to Hostel Management</h1>
-    <p>Our hostel is located in the heart of the city and offers affordable and comfortable accommodations for students. Our hostel features:</p>
 
-</main>
-</br>
-</br>
-</br>
+<div class="heading">
+    <h1>About Us</h1>
+    <p>Hello Guys</p>
+</div>
+<section class="about-us">
+    <!-- <img src="./pictures/hostel.jpg" alt=""> -->
+    <div class="content">
+        <h2>Our Hostel</h2>
+        <p>we are the best in this game</p>
+    </div>
+</section>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 <div class="wrapper">
     <span class="icon-close">
@@ -83,7 +95,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             </div>
             <button type="submit" class="btn">Login</button>
             <div class="login-register">
-               <a href="#" class="register-link"> </a></p>
+                <p><a href="#" class="register-link"></a></p>
             </div>
         </form>
     </div>
@@ -115,40 +127,8 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             <div class="login-register">
                 <p>Already have an account?<a href="#" class="login-link"> Login</a></p>
             </div>
-            <!-- <script>
-                function validateLoginForm() {
-                    // Get input values
-                    const email = document.getElementById('email').value.trim();
-                    const password = document.getElementById('password').value.trim();
-                    const confirmPassword = document.getElementById('confirm-password').value.trim();
-
-                    // Email validation regex
-                    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-
-                    // Check if email is valid
-                    if (!emailRegex.test(email)) {
-                        alert('Please enter a valid email address.');
-                        return false;
-                    }
-
-                    // Check if password matches confirm password
-                    if (password !== confirmPassword) {
-                        alert('Passwords do not match.');
-                        return false;
-                    }
-
-                    // If everything is valid, return true
-                    return true;
-                }
-            </script> -->
+          
         </form>
 
     </div>
 </div>
-
-</br>
-</br>
-</br>
-<?php
-include_once 'includes/footer.php'
-?>

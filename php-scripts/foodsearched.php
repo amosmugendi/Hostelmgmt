@@ -28,10 +28,6 @@ if (!$_SESSION['id']) {
             <link rel="stylesheet" href="../css/view.css">
         </head>
         <section class="main">
-            <!-- <form class="form-inline mb-3" action="../controllers/searchfood.php" method="GET">
-                <input class="form-control mr-sm-2" type="search" placeholder="Search by Food ID" aria-label="Search" name="search">
-                <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
-            </form> -->
             <table class="table">
                 <thead>
                     <tr>
@@ -39,11 +35,6 @@ if (!$_SESSION['id']) {
                         <th>Food Type</th>
                         <th>Food</th>
                         <th>Day</th>
-                        <!-- <th class="d-flex align-items-">
-                            <input class="form-control mr-sm-2" type="search" placeholder="Search by Food ID" aria-label="Search" name="search">
-                            <button class="primary-button small-button" type="submit">Search</button>
-                        </th> -->
-
                     </tr>
                 </thead>
                 <tbody>

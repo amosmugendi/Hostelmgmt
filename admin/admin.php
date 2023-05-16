@@ -33,8 +33,8 @@ require_once '../db/conn.php';
         </div>
         <div class="card">
             <i class="fas fa-pen-square"></i>
-            <h3></h3>
-            <p>Make sure your personal details are up-to-date</p>
+            <h3>Update Admin Password</h3>
+            <p></p>
             <button id="updatebtn">Update</button>
             <script>
                 //script to acctivate buttons on the student pannel
@@ -48,7 +48,7 @@ require_once '../db/conn.php';
                     location.href = "bookedmeals.php";
                 }
                 document.getElementById("updatebtn").onclick = function() {
-                    location.href = "update.php";
+                    location.href = "../changepass.php";
                 }
             </script>
         </div>

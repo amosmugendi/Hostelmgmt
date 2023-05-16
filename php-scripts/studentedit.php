@@ -2,7 +2,7 @@
 use LDAP\Result;
     require_once('../db/conn.php');
     //get values from post operation
-    if(isset($_POST['submit'])){
+    if ($_SERVER['REQUEST_METHOD'] == 'POST'){
         //extract values from the $_POST array
         $id=$_POST['id'];
         $reg=$_POST['reg'];

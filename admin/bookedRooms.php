@@ -10,6 +10,7 @@ $result = $reports->activeBookings();
 </head>
 
         <section class="main">
+            <h1>List of Booked Rooms </h1>
             <?php
             echo "<table>";
             echo "<tr>

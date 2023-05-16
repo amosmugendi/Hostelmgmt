@@ -14,7 +14,7 @@ include_once '../includes/adminheader.php';
         <div class="user-details">
             <div class="input-box">
                 <span class="details">Registration Number</span>
-                <input type="text" id="regno" name="regno"required>
+                <input type="text" id="regno" name="regno" required maxlength="7">
             </div>
             <div class="input-box">
                 <span class="details">First Name</span>
@@ -31,7 +31,7 @@ include_once '../includes/adminheader.php';
             </div>
             <div class="input-box">
                 <span class="details">ID/Passport </span>
-                <input type="text"  id="idno" name="idno" required>
+                <input type="text"  id="idno" name="idno" required maxlength="9">
             </div>
             <div class="input-box">
                 <span class="details">date of birth</span>
@@ -39,7 +39,7 @@ include_once '../includes/adminheader.php';
             </div>
             <div class="input-box">
                 <span class="details">Phone Number</span>
-                <input type="text"  id="phone" name="phone" required>
+                <input type="text"  id="phone" name="phone" required maxlength="11">
             </div>
             <div class="input-box">
                 <span class="details">Home County</span>
@@ -47,7 +47,7 @@ include_once '../includes/adminheader.php';
             </div>
             <div class="input-box">
                 <span class="details">Emergency Contact</span>
-                <input type="text" id="contact" name="contact" required>
+                <input type="text" id="contact" name="contact" required maxlength="11">
             </div>
         </div>
         <div class="button">

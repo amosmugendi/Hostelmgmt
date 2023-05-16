@@ -107,17 +107,18 @@ class crud
             return false;
         }
     }
-    public function editFood($id, $diet_type, $food, $Day)
+    public function editFood($food_id,$diet_type, $food, $Day)
     {
         try {
-            $sql = "UPDATE ` food_menu` SET `id`= :food_id,` diet_type`=:diet_type,`food`=:food,`Day`=:Day WHERE food_id= :id";
+            $sql = "UPDATE `food_menu` SET `food_id`= :food_id, `diet_type`=:diet_type, `food`=:food,`Day`=:date WHERE food_id= :food_id";
 
             $stmt = $this->db->prepare($sql);
             //bind all placeholders to the actual values
-            $stmt->bindparam(':food_id', $id);
+            // $stmt->bindparam(':id', $id);
+            $stmt->bindparam(':food_id', $food_id);
             $stmt->bindparam(':diet_type', $diet_type);
             $stmt->bindparam(':food', $food);
-            $stmt->bindparam(':Day', $Day);
+            $stmt->bindparam(':date', $Day);
 
             //execute statement
 
@@ -132,9 +133,9 @@ class crud
     public function deleteFood($id)
     {
         try {
-            $sql = "delete from Food_menu where food_id=:id";
+            $sql = "DELETE FROM `food_menu` where food_id=:food_id";
             $stmt = $this->db->prepare($sql);
-            $stmt->bindparam(':id', $id);
+            $stmt->bindparam(':food_id', $id);
             $stmt->execute();
             return true;
         } catch (PDOException $e) {
@@ -195,7 +196,7 @@ class crud
     public function editRoom($id, $room_type, $fee, $max_occupants, $status)
     {
         try {
-            $sql = "UPDATE ` rooms` SET `id`= :id,`room_type`=:room_type,`fee`=:fee,`max_occupants`=:max_occupants,`status`=:status WHERE room_id= :id";
+            $sql = "UPDATE `rooms` SET `id`= :id,`room_type`=:room_type,`fee`=:fee,`max_occupants`=:max_occupants,`status`=:status WHERE id= :id";
 
             $stmt = $this->db->prepare($sql);
             //bind all placeholders to the actual values
@@ -217,7 +218,7 @@ class crud
     public function resetRoom($id)
     {
         try {
-            $sql = "UPDATE rooms SET `status` = 'empty' WHERE id =:id";
+            $sql = "UPDATE `rooms` SET `status` = 'empty' WHERE id =:id";
             $stmt = $this->db->prepare($sql);
             $stmt->bindparam(':id', $id);
             $stmt->execute();

@@ -127,6 +127,20 @@ class reports
     public function getStudentDetails($id)
     {
         try {
+            $sql = "select * from student_details where reg=:id";
+            $stmt = $this->db->prepare($sql);
+            $stmt->bindparam(':id', $id);
+            $stmt->execute();
+            $result = $stmt->fetch();
+            return $result;
+        } catch (PDOException $e) {
+            echo $e->getmessage();
+            return false;
+        }
+    }
+    public function getProfileDetails($id)
+    {
+        try {
             $sql = "select * from student_details where userid=:id";
             $stmt = $this->db->prepare($sql);
             $stmt->bindparam(':id', $id);
@@ -138,4 +152,44 @@ class reports
             return false;
         }
     }
+    public function searchFoodDetails ($search) {
+        try {
+            $sql = "SELECT * FROM food_menu WHERE food_id = :search";
+            $stmt = $this->db->prepare($sql);
+            // $stmt->bindparam(':id', $id);
+            $stmt->bindparam(':search', $search);
+            $stmt->execute();
+            $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
+            return $result;
+        } catch (PDOException $e) {
+            echo "Error: " . $e->getMessage();
+        }
+    }
+    public function searchRoomDetails ($search) {
+        try {
+            $sql = "SELECT * FROM rooms WHERE id = :search";
+            $stmt = $this->db->prepare($sql);
+            // $stmt->bindparam(':id', $id);
+            $stmt->bindparam(':search', $search);
+            $stmt->execute();
+            $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
+            return $result;
+        } catch (PDOException $e) {
+            echo "Error: " . $e->getMessage();
+        }
+    }
+    public function searchStudentDetails ($search) {
+        try {
+            $sql = "SELECT * FROM student_details WHERE reg = :search";
+            $stmt = $this->db->prepare($sql);
+            // $stmt->bindparam(':id', $id);
+            $stmt->bindparam(':search', $search);
+            $stmt->execute();
+            $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
+            return $result;
+        } catch (PDOException $e) {
+            echo "Error: " . $e->getMessage();
+        }
+    }
+    
 }
