@@ -7,6 +7,7 @@
     if (isset($_GET['submit'])){
         //get id values 
         $id=$_GET['id'];
+        echo $id;
         //call reset function
         $result= $crud->resetRoom($id);
         //redirect

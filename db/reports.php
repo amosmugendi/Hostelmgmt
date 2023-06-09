@@ -152,6 +152,32 @@ class reports
             return false;
         }
     }
+    public function getPaymentDetails($id)
+    {
+        try {
+            $sql = "SELECT * FROM `payment` WHERE userid=:id";
+            $stmt = $this->db->prepare($sql);
+            $stmt->bindParam(':id', $id);
+            $stmt->execute();
+            $result = $stmt->fetchAll();
+            return $result;
+        } catch (PDOException $e) {
+            echo $e->getMessage();
+            return false;
+        }
+    }
+    public function getPayments()
+    {
+        try {
+            $sql = "SELECT * FROM `payment` ";
+            $result = $this->db->query($sql);
+            return $result;
+        } catch (PDOException $e) {
+            echo $e->getmessage();
+            return false;
+        }
+    }
+    
     public function searchFoodDetails ($search) {
         try {
             $sql = "SELECT * FROM food_menu WHERE food_id = :search";
@@ -181,6 +207,19 @@ class reports
     public function searchStudentDetails ($search) {
         try {
             $sql = "SELECT * FROM student_details WHERE reg = :search";
+            $stmt = $this->db->prepare($sql);
+            // $stmt->bindparam(':id', $id);
+            $stmt->bindparam(':search', $search);
+            $stmt->execute();
+            $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
+            return $result;
+        } catch (PDOException $e) {
+            echo "Error: " . $e->getMessage();
+        }
+    }
+    public function searchPayment($search) {
+        try {
+            $sql = "SELECT * FROM `payment` WHERE status = :search";
             $stmt = $this->db->prepare($sql);
             // $stmt->bindparam(':id', $id);
             $stmt->bindparam(':search', $search);

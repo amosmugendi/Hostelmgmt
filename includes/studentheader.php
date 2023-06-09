@@ -17,7 +17,7 @@ include_once '../includes/session.php';
     <link rel="stylesheet" href="../css/add.css">
     <link rel="stylesheet" href="../css/dashboards.css">
     <link rel="stylesheet" href="../css/edit.css">
-    
+
 
 
     <script src="../js/script.js"></script>
@@ -43,13 +43,14 @@ include_once '../includes/session.php';
                         <i class="fas fa-chess-rook"></i>
                         <span class="nav-item">Booked Room</span>
                     </a></li>
-                <!--<li><a href="">
-                        <i class="fas fa-bed"></i>
-                        <span class="nav-item">Room Details</span>
-                    </a></li>-->
+
                 <li><a href="activemeals.php">
                         <i class="fas fa-utensils"></i>
                         <span class="nav-item">Booked Meals</span>
+                    </a></li>
+                    <li><a href="payrecord.php">
+                        <i class="fas fa-money-check"></i>
+                        <span class="nav-item">Payment Records</span>
                     </a></li>
                 <li><a href="../logout.php
                 " class="logout">

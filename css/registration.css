@@ -134,4 +134,7 @@
   .submit:hover {
     background-color: #148f77;
   }
-  
+  .error-message {
+    color: red;
+    font-size: 12px;
+  }

@@ -14,85 +14,83 @@ include_once '../includes/studentheader.php'
             <label for="reg_number">User ID:</label>
             <input type="text" id="reg_number" name="reg" value="<?php echo ($_SESSION['id']); ?>">
             <br>
-            <!-- <option value="Monday">Monday</option>
-                <option value="Tuesday">Tuesday</option>
-                <option value="Wednesday">Wednesday</option>
-                <option value="Thursday">Thursday</option>
-                <option value="Friday">Friday</option>
-                <option value="Saturday">Saturday</option>
-                <option value="Sunday">Sunday</option>
-            </select>-->
-
-            <br>
             <br>
 
-            <label for="Diet">Diet Type:</label>
+            <label for="diet_type">Diet Type:</label>
             <select id="diet_type" name="diet_type">
-                <option value="">Selet type of diet..</option>
-                <option value="normal">Normal Diet</option>
+                <option value="">Select type of diet..</option>
+                <option value="normal">Normal Diet</option>b
                 <option value="special">Special Diet</option>
-            </select <br>
-            <br>
-            <div id='foods_list'></div>
+            </select>
             <br>
             <br>
-            <button type="submit" class="primary-button small-button">Book Now </button>
-            <button type="subit"><a onclick="return confirm('are you sure you want to cancel?');" href="student.php?id" type="submit">Cancel</a></button> 
-            <!-- <button type="submit" class="delete-button small-button" onclick="return confirm('are you sure you want to cancel?'); window.location.href='student.php?'">Cancel</button> -->
+            <div id="foods_list"></div>
+            <br>
+            <br>
+            <button type="submit" class="primary-button small-button">Book Now</button>
+            <button type="submit" onclick="return confirm('Are you sure you want to cancel?');" href="student.php?id" class="cancel-button small-button">Cancel</button>
         </form>
     </div>
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script>
-        $(document).ready(function() {
-            // trigger the function when the room type is changed
-            $("#diet_type").change(function() {
-                var diet_type = $(this).val();
+        document.addEventListener("DOMContentLoaded", function() {
+            // trigger the function when the diet type is changed
+            var dietTypeSelect = document.getElementById("diet_type");
+            dietTypeSelect.addEventListener("change", function() {
+                var dietType = dietTypeSelect.value;
 
-                // send an AJAX request to retrieve the list of rooms
-                $.ajax({
-                    url: "../controllers/get_foodmenu.php",
-                    type: "POST",
-                    data: {
-                        diet_type: diet_type
-                    },
-                    success: function(data) {
-                        var foodArray = JSON.parse(data); // Convert the returned data to a JavaScript array
+                // create a new XMLHttpRequest object
+                var xhr = new XMLHttpRequest();
 
-                        // Build the select element with the food data using a PHP foreach loop
+                // configure the request
+                xhr.open("POST", "../controllers/get_foodmenu.php", true);
+                xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+
+                // define the callback function for a successful request
+                xhr.onload = function() {
+                    if (xhr.status === 200) {
+                        var data = JSON.parse(xhr.responseText); // Convert the returned data to a JavaScript array
+
+                        // Build the select element with the food data using a for loop
                         var selectElement = '<select name="food_id" id="food_id">';
-                        $.each(foodArray, function(index, food) {
+                        for (var i = 0; i < data.length; i++) {
+                            var food = data[i];
                             selectElement += '<option value="' + food.food_id + '" name="food_id">' + food.food_id + ' (food: ' + food.food + ', Day: ' + food.Day + ')' + '</option>';
-                        });
+                        }
                         selectElement += '</select>';
 
-                        // Add the select element to the #rooms_list div
-                        $("#foods_list").html(selectElement);
+                        // Add the select element to the #foods_list div
+                        var foodsListDiv = document.getElementById("foods_list");
+                        foodsListDiv.innerHTML = selectElement;
                     }
-                });
+                };
+
+                // send the request with the selected diet type
+                xhr.send("diet_type=" + encodeURIComponent(dietType));
             });
         });
     </script>
     <script>
-        $(document).ready(function() {
+        document.addEventListener("DOMContentLoaded", function() {
             // Check if there is a success message in the session
-            <?php if (isset($_SESSION["success"])) { ?>
+            var successMessage = "<?php echo isset($_SESSION['success']) ? $_SESSION['success'] : ''; ?>";
+            if (successMessage !== "") {
                 // Display the success message in an alert
-                alert("<?php echo $_SESSION["success"]; ?>");
-                // Clear the success message from the session
-                <?php unset($_SESSION["success"]); ?>
-            <?php } ?>
+                alert(successMessage);
+            }
         });
     </script>
     <script>
-        // Get a reference to the room Category dropdown menu
-        var serviceType = document.getElementById("diet_type");
-        // Get a reference to the details text input field
-        var detailsSection = document.getElementById("details-section");
-        var details = document.getElementById("details");
-        // Attach a change event listener to the service type dropdown menu
-        serviceType.addEventListener("change", function() {
-            // If the selected value is "sigle room", display the details section
-            if (serviceType.value === "Special") {
+        // Get a reference to the diet type dropdown menu
+        var dietType = document.getElementById("diet_type");
+        // Attach a change event listener to the diet type dropdown menu
+        dietType.addEventListener("change", function() {
+            // Get a reference to the details section
+            var detailsSection = document.getElementById("details-section");
+            // Get a reference to the details text input field
+            var details = document.getElementById("details");
+
+            // If the selected value is "special", display the details section
+            if (dietType.value === "special") {
                 detailsSection.style.display = "block";
                 details.required = true;
             } else {
@@ -101,7 +99,4 @@ include_once '../includes/studentheader.php'
             }
         });
     </script>
-
-
-
 </section>

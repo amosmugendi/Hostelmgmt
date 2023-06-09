@@ -33,7 +33,7 @@ class crud
             return false;
         }
     }
-    public function newBooking($reg, $roomid, $current_date, $roomstatus)
+    public function newBooking($reg, $hostel, $roomid, $current_date, $roomstatus)
     {
         try {
             //check if entry with the same student exhist
@@ -42,15 +42,17 @@ class crud
             $sql = "INSERT INTO `bookings` (`roomid`, `studentregno`, `date`)VALUES(:roomid,:reg,:current_date)";
             $stmt = $this->db->prepare($sql);
             $stmt->bindparam(':reg', $reg);
+            $stmt->bindparam(':roomid', $hostel);
             $stmt->bindparam(':roomid', $roomid);
             $stmt->bindparam(':current_date', $current_date);
             //$stmt->bindparam(':status',$roomstatus);
             // execute insert statement
             if ($stmt->execute()) {
                 // if insert successful, update the room status
-                $sql = "UPDATE `rooms` SET `status` = 'full' WHERE `id` = :roomid";
+                $sql = "UPDATE `rooms` SET `status` = :status  WHERE `id` = :roomid";
                 $stmt = $this->db->prepare($sql);
                 $stmt->bindparam(':roomid', $roomid);
+                $stmt->bindparam(':status',$roomstatus);
                 $stmt->execute();
                 return true;
             }
@@ -107,6 +109,29 @@ class crud
             return false;
         }
     }
+    public function insertPayment($userid, $fee, $amount_paid, $upload_slip, $balance, $status, $date)
+    {
+        try {
+            $sql = "INSERT INTO `payment` (userid, fee, amount_paid, slip, balance, status, date) VALUES (:userid,:fee, :amount_paid, :upload_slip, :balance, :status, :date)";
+            $stmt = $this->db->prepare($sql);
+    
+            $stmt->bindParam(':userid', $userid);
+            $stmt->bindParam(':fee', $fee);
+            $stmt->bindParam(':amount_paid', $amount_paid);
+            $stmt->bindParam(':upload_slip', $upload_slip);
+            $stmt->bindParam(':balance', $balance);
+            $stmt->bindParam(':status', $status);
+            $stmt->bindParam(':date', $date);
+    
+            // Execute the statement
+            $stmt->execute();
+            return true;
+        } catch (PDOException $e) {
+            echo $e->getMessage();
+            return false;
+        }
+    }
+
     public function editFood($food_id,$diet_type, $food, $Day)
     {
         try {

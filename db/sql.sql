@@ -65,3 +65,13 @@ AND NOT EXISTS (
    FROM bookings
    WHERE bookings.roomid = rooms.id
 );
+
+CREATE TABLE payment (
+    Id INT PRIMARY KEY AUTO_INCREMENT,
+    userid INT,
+    amount_paid DECIMAL(10, 2),
+    slip VARCHAR(255),
+    balance DECIMAL(10, 2),
+    status VARCHAR(20),
+    FOREIGN KEY (userid) REFERENCES users(id)
+);
