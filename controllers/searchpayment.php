@@ -25,34 +25,50 @@ if (isset($_POST['submit'])) {
     <head>
         <link rel="stylesheet" href="../css/view.css">
         <link rel="stylesheet" href="../css/search.css">
+        <style>
+        
+        img {
+            max-width: 100px;
+            max-height: 100px;
+        }
+    </style>
+
     </head>
 </head>
 <section class="main">
+    <h1>Results</h1>
     <?php if ($result) { ?>
         <table>
-                 <tr>
-                    
-                    <th>User Id</th>
-                    <th>Aount Paid</th>
-                    <th>Payment Slip</th>
-                    <th>Balance</th> 
-                    <th>Status</th> 
-                     
-                    <th>
-                        <button class="primary-button small-button" onclick="window.location.href='../admin/viewpayments.php'">Back</button>
-                    </th>             
-                 </tr>
-              
-               <?php foreach ($result as $r) {?>
+            <tr>
+
+                <th>User Id</th>
+                <th>Aount Paid</th>
+                <th>Balance</th>
+                <th>Status</th>
+                <th>Payment Slip</th>
+
+                <th>
+                    <button class="primary-button small-button" onclick="window.location.href='../admin/viewpayments.php'">Back</button>
+                </th>
+            </tr>
+
+            <?php foreach ($result as $r) {
+                $slip = $r['slip'];
+                ?>
+                
                 <tr>
-                    <td>  <?php echo $r['userid']?></td>
-                    <td> <?php echo $r['amount_paid']?></td>
-                    <td><img src="<?php echo $slip; ?>" /></td>
-                    <td> <?php echo $r['balance']?></td>
-                    <td> <?php echo $r['status']?></td>
+                    <td> <?php echo $r['userid'] ?></td>
+                    <td> <?php echo $r['amount_paid'] ?></td>
+                    <td> <?php echo $r['balance'] ?></td>
+                    <td> <?php echo $r['status'] ?></td>
+                    <td>
+                        <a href="<?php echo $slip; ?>" download>
+                            <img src="<?php echo $slip; ?>" />
+                        </a> 
+                    </td>
                 </tr>
-                <?php } ?>
-    </table>
+            <?php } ?>
+        </table>
     <?php } else { ?>
         <p>No results found.</p>
     <?php } ?>

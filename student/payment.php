@@ -19,7 +19,7 @@ include_once '../includes/studentheader.php';
             <label for="reg_number">User ID:</label>
             <input type="text" id="reg_number" name="regno"  value="<?php echo ($_SESSION['id']); ?>">
             <br>
-            <!-- <input type="hidden" name="id" value="<?php echo $rooms['id'] ?>" /> -->
+            <input type="hidden" name="id" value="<?php echo $rooms['id'] ?>" />
             <br>
             <br>
             <div>
@@ -28,6 +28,9 @@ include_once '../includes/studentheader.php';
             </div>
             <br>
             <div>
+                <?php 
+                
+                ?>
                 <label for="paid">Amount Paid</label>
                 <input type="number" id="paid" name="paid">
             </div>

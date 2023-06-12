@@ -43,6 +43,14 @@ CREATE TABLE foodbookings (
   date DATE
 );
 
+CREATE TABLE foodbookings (
+  booking_id INT AUTO_INCREMENT PRIMARY KEY,
+  food_id INT,
+  reg VARCHAR(50),
+  date DATE,
+  FOREIGN KEY (food_id) REFERENCES food_menu(food_id)
+);
+
 ALTER TABLE foodbookings
 ADD FOREIGN KEY (food_id)
 REFERENCES food_menu(food_id);
@@ -53,6 +61,8 @@ MODIFY COLUMN food_id INT NOT NULL;
 UPDATE rooms SET status = 'empty' WHERE id = 1;
 
  UPDATE users SET password='$hashedPassword' WHERE id=$userId";
+ 
+  
 
 --  Disable the foreign key constraint
 ALTER TABLE bookings

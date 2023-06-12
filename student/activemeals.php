@@ -52,7 +52,7 @@ if (!$_SESSION['id']) {
                             <td><?php echo $row['food_id']; ?></td>
                             <td><?php echo $row['diet_type']; ?></td>
                             <td><?php echo $row['food']; ?></td>
-                            <td><?php echo $row['Day']; ?></td>
+                            <td><?php echo $row['date']; ?></td>
                         </tr>
                     <?php } ?>
                 </tbody>

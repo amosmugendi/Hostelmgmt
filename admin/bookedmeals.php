@@ -23,7 +23,7 @@ $result = $reports->activeFoodBookings();
     if (count($result) > 0) {
         foreach ($result as $row) {
             echo "<tr>
-                    <td>" . $row["id"] . "</td>
+                    <td>" . $row["booking_id"] . "</td>
                     <td>" . $row["food_id"] . "</td>
                     <td>" . $row["reg"] . "</td>
                     <td>" . $row["date"] . "</td> 

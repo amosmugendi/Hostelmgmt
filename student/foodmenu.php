@@ -14,6 +14,11 @@ include_once '../includes/studentheader.php'
             <label for="reg_number">User ID:</label>
             <input type="text" id="reg_number" name="reg" value="<?php echo ($_SESSION['id']); ?>">
             <br>
+            <div>
+            <label for="Day">Day:</label>
+            <input type="date" id="date" name="date" required><br>
+            </div>
+            
             <br>
 
             <label for="diet_type">Diet Type:</label>
@@ -28,7 +33,8 @@ include_once '../includes/studentheader.php'
             <br>
             <br>
             <button type="submit" class="primary-button small-button">Book Now</button>
-            <button type="submit" onclick="return confirm('Are you sure you want to cancel?');" href="student.php?id" class="cancel-button small-button">Cancel</button>
+            <a onclick="return confirm('are you sure you want to cancel?');" href="student.php"> Cancel</a>
+            <!-- <button type="submit" onclick="return confirm('Are you sure you want to cancel?');" href="student.php?id" class="cancel-button small-button">Cancel</button> -->
         </form>
     </div>
     <script>
@@ -54,7 +60,7 @@ include_once '../includes/studentheader.php'
                         var selectElement = '<select name="food_id" id="food_id">';
                         for (var i = 0; i < data.length; i++) {
                             var food = data[i];
-                            selectElement += '<option value="' + food.food_id + '" name="food_id">' + food.food_id + ' (food: ' + food.food + ', Day: ' + food.Day + ')' + '</option>';
+                            selectElement += '<option value="' + food.food_id + '" name="food_id">' + food.food_id + ' (food: ' + food.food + ')' + '</option>';
                         }
                         selectElement += '</select>';
 
@@ -99,4 +105,15 @@ include_once '../includes/studentheader.php'
             }
         });
     </script>
+    <script>
+    // Get the current date
+    var currentDate = new Date().toISOString().split('T')[0];
+    
+    // Get the date input element
+    var dateInput = document.getElementById('date');
+    
+    // Set the minimum date to the current date
+    dateInput.min = currentDate;
+</script>
+
 </section>

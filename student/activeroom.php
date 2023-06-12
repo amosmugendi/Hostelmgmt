@@ -43,6 +43,24 @@ if (!$_SESSION['id']) {
                         Room Status: <?php echo $result['status']; ?>
                     </p>
                 </div>
+                <button class="delete-button small-button" name="submit" onclick="resetRoomConfirmation(<?php echo $result['id']; ?>)" <?php echo ($result['checkout'] ? 'disabled' : ''); ?> style="<?php echo ($result['checkout'] ? 'background-color: gray;' : ''); ?>">Checkout</button>
+                <button class="checkin-button small-button" name="submit" style="display: <?php echo ($result['checkout'] ? 'inline-block' : 'none'); ?>; background-color: green;" onclick="redirectToBookRoom()">Check-in</button>
+
+                <script>
+                    function resetRoomConfirmation(id) {
+                        if (confirm('Are you sure you want to checkout this room?')) {
+                            window.location.href = '../php-scripts/checkout.php?id=' + id;
+                        }
+                        return false;
+                    }
+
+                    function redirectToBookRoom() {
+                        window.location.href = 'bookroom.php';
+                    }
+                </script>
+
+
+
             </div>
         </section>
 

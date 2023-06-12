@@ -36,9 +36,10 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         $isSuccess = $crud->insertPayment($userid,$fee,$amount_paid, $upload_slip, $balance, $status, $date);
         if ($isSuccess) {
             // session_start();
-            $_SESSION["success"] = "Payment Successfull";
+            $_SESSION["success"] = "Booking Successfull";
+            // $_SESSION["success"] = "Payment Successfull";
             //echo 'operation successful';
-            header("Location: ../student/profile.php");
+            header("Location: ../student/student.php");
         } else {
             echo 'an error occurred please try again';
         }

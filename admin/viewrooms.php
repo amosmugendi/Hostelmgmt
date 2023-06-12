@@ -15,7 +15,7 @@ $result = $reports->getRooms();
     <h1>List of Rooms</h1>
     <form action="../controllers/searchroom.php" method="post" class="search-container">
         <input class="form-control" type="search" placeholder="Search by RoomID" aria-label="Search" name="search" require>
-        <button class="primary-button small-button" type="submit"  name="submit">Search</button><br>
+        <button class="primary-button small-button" type="submit" name="submit">Search</button><br>
     </form>
     <table>
         <tr>
@@ -36,7 +36,15 @@ $result = $reports->getRooms();
                 <td>
                     <button class="primary-button small-button" onclick="window.location.href='viewroom.php?id= <?php echo $r['id'] ?>'">view</button>
                     <button class="warning-button small-button" onclick="window.location.href='editroom.php?id= <?php echo $r['id'] ?>'">Edit</button>
-                    <button class="delete-button small-button" name="submit" onclick="return confirm('are you sure you want to reset this room?'); window.location.href='delete.php?id= <?php echo $r['id'] ?>'">Reset</button>
+                    <button class="delete-button small-button" name="submit" onclick="resetRoomConfirmation(<?php echo $r['id']; ?>)">Reset</button>
+                    <script>
+                        function resetRoomConfirmation(id) {
+                            if (confirm('Are you sure you want to reset this room?')) {
+                                window.location.href = '../php-scripts/reset.php?id=' + id;
+                            }
+                            return false;
+                        }
+                    </script>
                 </td>
             </tr>
         <?php } ?>

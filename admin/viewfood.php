@@ -19,7 +19,7 @@ if (!isset($_GET['id'])) {
                 <div class="card" style="width: 18rem">
                     <div class="card-body">
                         <h5 class="card-title">
-                            Room Details
+                            Food Details
                         </h5>
                         <p class="Card-text">
                             Food ID: <?php echo $result['food_id']; ?>
@@ -30,10 +30,6 @@ if (!isset($_GET['id'])) {
                         <p class="card-text">
                             food: <?php echo $result['food']; ?>
                         </p>
-                        <p class="card-text">
-                            Day: <?php echo $result['Day']; ?>
-                        </p>
-
                     </div>
 
                 </div>

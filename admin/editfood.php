@@ -13,7 +13,7 @@ if (!isset($_GET['id'])) {
 ?>
    
         <section class="main">
-        <h1 class="text-center">Edit Room Details</h1>
+        <h1 class="text-center">Edit Food Details</h1>
 
         <form method="post" action="../php-scripts/foodedit.php">
             <input type="hidden" name="id" value="<?php echo $foods['food_id'] ?>" />
@@ -28,10 +28,6 @@ if (!isset($_GET['id'])) {
             <div class="form-group">
                 <label for="food" class="form-label">Food</label>
                 <input type="text" class="form-control" value="<?php echo $foods['food'] ?>" id="food" name="food">
-            </div>
-            <div class="form-group">
-                <label for="date" class="form-label">Date</label>
-                <input type="date" class="form-control" value="<?php echo $foods['Day'] ?>" id="date" name="date">
             </div>
             <button type="submit " name="save" class="btn">save changes</button>
             <a onclick="return confirm('are you sure you want to cancel?')"; href="viewfoods.php"> Cancel</a>

@@ -8,7 +8,7 @@ class crud
     {
         $this->db = $conn;
     }
-    public function insertStudent($reg, $userid,$fname, $lname, $email, $idno, $dob, $phone, $county, $contact)
+    public function insertStudent($reg, $userid, $fname, $lname, $email, $idno, $dob, $phone, $county, $contact)
     {
         try {
             $sql = "INSERT INTO student_details(reg,userid,fname,lname,email,idno,dob,phone,county,contact) VALUES(:reg,:userid,:fname,:lname,:email,:idno,:dob,:phone,:county,:contact)";
@@ -39,10 +39,10 @@ class crud
             //check if entry with the same student exhist
 
 
-            $sql = "INSERT INTO `bookings` (`roomid`, `studentregno`, `date`)VALUES(:roomid,:reg,:current_date)";
+            $sql = "INSERT INTO `bookings` (`roomid`, `hostel`,`studentregno`, `date`)VALUES(:roomid,:hostel,:reg,:current_date)";
             $stmt = $this->db->prepare($sql);
             $stmt->bindparam(':reg', $reg);
-            $stmt->bindparam(':roomid', $hostel);
+            $stmt->bindparam(':hostel', $hostel);
             $stmt->bindparam(':roomid', $roomid);
             $stmt->bindparam(':current_date', $current_date);
             //$stmt->bindparam(':status',$roomstatus);
@@ -52,7 +52,7 @@ class crud
                 $sql = "UPDATE `rooms` SET `status` = :status  WHERE `id` = :roomid";
                 $stmt = $this->db->prepare($sql);
                 $stmt->bindparam(':roomid', $roomid);
-                $stmt->bindparam(':status',$roomstatus);
+                $stmt->bindparam(':status', $roomstatus);
                 $stmt->execute();
                 return true;
             }
@@ -114,7 +114,7 @@ class crud
         try {
             $sql = "INSERT INTO `payment` (userid, fee, amount_paid, slip, balance, status, date) VALUES (:userid,:fee, :amount_paid, :upload_slip, :balance, :status, :date)";
             $stmt = $this->db->prepare($sql);
-    
+
             $stmt->bindParam(':userid', $userid);
             $stmt->bindParam(':fee', $fee);
             $stmt->bindParam(':amount_paid', $amount_paid);
@@ -122,7 +122,7 @@ class crud
             $stmt->bindParam(':balance', $balance);
             $stmt->bindParam(':status', $status);
             $stmt->bindParam(':date', $date);
-    
+
             // Execute the statement
             $stmt->execute();
             return true;
@@ -132,7 +132,7 @@ class crud
         }
     }
 
-    public function editFood($food_id,$diet_type, $food, $Day)
+    public function editFood($food_id, $diet_type, $food, $Day)
     {
         try {
             $sql = "UPDATE `food_menu` SET `food_id`= :food_id, `diet_type`=:diet_type, `food`=:food,`Day`=:date WHERE food_id= :food_id";
@@ -243,7 +243,7 @@ class crud
     public function resetRoom($id)
     {
         try {
-            $sql = "UPDATE `rooms` SET `status` = 'empty' WHERE id =:id";
+            $sql = "UPDATE `rooms` SET `status` = 'Empty' WHERE id =:id";
             $stmt = $this->db->prepare($sql);
             $stmt->bindparam(':id', $id);
             $stmt->execute();
@@ -253,6 +253,65 @@ class crud
             return false;
         }
     }
+    // Inside your CRUD class
+    public function checkout($id)
+    {
+        try {
+            // Get the current date and time
+            $checkoutDate = date('Y-m-d H:i:s');
+
+            // Update the bookings table with the checkout date
+            $sql = "UPDATE bookings SET checkout = :checkoutDate WHERE id = :id";
+            $stmt = $this->db->prepare($sql);
+            $stmt->bindParam(':checkoutDate', $checkoutDate);
+            $stmt->bindParam(':id', $id);
+            $stmt->execute();
+
+            return true;
+        } catch (PDOException $e) {
+            echo $e->getMessage();
+            return false;
+        }
+    }
+    public function Disable($id)
+{
+    try {
+    
+        // Update the users table to chage status to inactive
+        $sql = "UPDATE `users` SET `status` = 'Inactive' WHERE id =:id";
+        // $sql = "UPDATE users SET status = :status WHERE id = :id";
+        $stmt = $this->db->prepare($sql);
+        // $stmt->bindParam(':status', $Status);
+        $stmt->bindParam(':id', $id);
+        $stmt->execute();
+
+        return true;
+    } catch (PDOException $e) {
+        echo $e->getMessage();
+        return false;
+    }
+}
+
+    public function Enable($id)
+    {
+        try {
+            // set status Active
+
+            // Update the bookings table with the checkout date
+            $sql = "UPDATE `users` SET `status` = 'Active' WHERE id =:id";
+            $stmt = $this->db->prepare($sql);
+            // $stmt->bindParam(':status', $Status);
+            $stmt->bindParam(':id', $id);
+            $stmt->execute();
+
+            return true;
+        } catch (PDOException $e) {
+            echo $e->getMessage();
+            return false;
+        }
+    }
+
+
     public function getStudentDetails($id)
     {
         try {
@@ -271,7 +330,7 @@ class crud
     {
         try {
             $sql = "UPDATE `student_details` SET `reg`=:reg, `fname`=:fname, `lname`=:lname, `email`=:email, `idno`=:idno, `dob`=:dob, `phone`=:phone, `county`=:county, `contact`=:contact WHERE userid=:id";
-    
+
             $stmt = $this->db->prepare($sql);
             //bind all placeholders to the actual values
             $stmt->bindparam(':id', $id);
@@ -292,6 +351,4 @@ class crud
             return false;
         }
     }
-}    
-
-
+}

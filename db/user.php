@@ -7,7 +7,7 @@ class users
     {
         $this->db = $conn;
     }
-    public function insertUser($email, $password)
+    public function insertUser($email, $password,$Status)
     {
         try {
 
@@ -17,12 +17,13 @@ class users
             } else {
                 $new_password = md5($password . $email);
                 //define sql statement to be exected 
-                $sql = "INSERT INTO users (email,password)VALUES (:email,:password)";
+                $sql = "INSERT INTO users (email,password,status)VALUES (:email,:password,:status)";
                 //prepare the sql statement for execution
                 $stmt = $this->db->prepare($sql);
                 //bind all placeholders to the actual values
                 $stmt->bindparam(':email', $email);
                 $stmt->bindparam(':password', $new_password);
+                $stmt->bindparam(':status', $Status);
                 //execute statement 
                 $stmt->execute();
                 return $stmt;
@@ -35,7 +36,7 @@ class users
     public function getUser($email, $password)
     { {
             try {
-                $sql = "SELECT `id`,`role`,`email`, `password` FROM `users` WHERE email=:email AND :password";
+                $sql = "SELECT `id`,`role`,`email`, `password`, `status` FROM `users` WHERE email=:email AND password=:password";
                 $stmt = $this->db->prepare($sql);
                 $stmt->bindparam(':email', $email);
                 $stmt->bindparam(':password', $password);

@@ -18,10 +18,10 @@
             <label for="hostel">Hostel Building:</label>
             <select id="hostel" name="hostel">
                 <option value="">Select Hostel</option>
-                <option value="single">Ridges</option>
-                <option value="shared">Abardare</option>
-                <option value="single">Kilimanjaro</option>
-                <option value="shared">Everest</option>
+                <option value="Ridges">Ridges</option>
+                <option value="Abardare">Abardare</option>
+                <option value="Kilimanjaro">Kilimanjaro</option>
+                <option value="Everest">Everest</option>
             </select>
             <br>
             <br>
@@ -38,7 +38,8 @@
             <br>
             <br>
             <button type="submit" class="primary-button small-button">Book Now</button>
-            <button type="submit" onclick="return confirm('Are you sure you want to cancel?');" href="student.php?id" class="cancel-button small-button">Cancel</button>
+            <a onclick="return confirm('are you sure you want to cancel?');" href="student.php"> Cancel</a>
+            <!-- <button type="submit" onclick="return confirm('Are you sure you want to cancel?');" href="/student/student.php" class="cancel-button small-button">Cancel</button> -->
         </form>
     </div>
     <script>

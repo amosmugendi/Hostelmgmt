@@ -1,10 +1,23 @@
 <?php
-$title = "View students";
-include_once '../db/conn.php';
+$title = "Search Results";
 include_once '../includes/session.php';
 include_once '../includes/adminheader.php';
+include_once '../db/conn.php';
 
-$result = $reports->getStudent();
+// check if the form has been submitted
+if (isset($_POST['submit'])) {
+    $search = $_POST["search"];
+    // Get the ID of the current logged-in student
+    // $id = $_SESSION['id'];
+
+    // Call the searchStudentFoodDetails function to get the results
+    $result = $reports->searchStudentStatus($search);
+} else {
+    // if the form has not been submitted, redirect to the homepage
+    echo '';
+    header("Location: ../admin/viewstudents.php");
+    exit();
+}
 ?>
 
 <head>
@@ -14,14 +27,14 @@ $result = $reports->getStudent();
 </head>
 
 <section class="main">
-    <div class="flex-container">
+    <!-- <div class="flex-container">
         <h1 class="text-center">List of Registered Students</h1>
-        <form action="../controllers/searchstatus.php" method="post" class="search-container">
-            <input class="form-control" type="search" placeholder="Search by regno/userid/status" aria-label="Search" name="search" require>
+        <form action="../controllers/searchstudent.php" method="post" class="search-container">
+            <input class="form-control" type="search" placeholder="Search by regno/userid" aria-label="Search" name="search" require>
             <button class="primary-button small-button" type="submit" name="submit">Search</button>
         </form>
-    </div>
-
+    </div> -->
+    <?php if ($result) { ?>
     <table>
         <tr>
 
@@ -31,10 +44,12 @@ $result = $reports->getStudent();
             <th>Email</th>
             <th>Status</th>
             <th>Actions</th>
+            <th>
+                <button class="primary-button small-button" onclick="window.location.href='../admin/studentlist.php'">Back</button>
+            </th>
 
         </tr>
-        <?php
-        while ($r = $result->fetch(PDO::FETCH_ASSOC)) { ?>
+        <  <?php foreach ($result as $r) {?>
             <tr>
                 <td> <?php echo $r['reg'] ?></td>
                 <td> <?php echo $r['fname'] ?></td>
@@ -93,6 +108,9 @@ $result = $reports->getStudent();
             </tr>
         <?php } ?>
     </table>
+    <?php } else { ?>
+        <p>No Student found.</p>
+    <?php } ?>
 </section>
 <?php
 include_once '../includes/adminfooter.php';

@@ -13,7 +13,7 @@ if (isset($_SESSION['id'])) {    // prevent user from going to index page
 }
 ?>
 <script>
-    onclick="window.location='index.php'"
+    onclick = "window.location='index.php'"
 </script>
 <?php
 
@@ -26,11 +26,11 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $password = $_POST['password'];
     $new_password = md5($password . $email);
     $result = $users->getUser($email, $new_password);
-    // echo($new_password);
+
     if (!$result) {
-        echo '<div>Email or password is incorrect! please try again.</div>';} 
-    
-    else{
+        echo '<script>alert("Email or password is incorrect! Please try again.");</script>';
+    } else {
+        if ($result['status'] == 'Active') {  // Check if user's status is active
             $_SESSION['email'] = $email;
             $_SESSION['id'] = $result['id'];
             $_SESSION['role'] = $result['role'];
@@ -40,14 +40,16 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             } elseif ($result['role'] == 'web_user') {
                 header("Location: student/student.php");
             }
+        } else {
+            echo '<script>alert("Your account is inactive. Please contact the administrator.");</script>';
         }
     }
-
+}
 ?>
 
 <head>
     <link rel="stylesheet" href="css/land.css">
-   
+
 </head>
 <main>
     <h1>Welcome to Hostel Management</h1>
@@ -83,7 +85,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             </div>
             <button type="submit" class="btn">Login</button>
             <div class="login-register">
-               <a href="#" class="register-link"> </a></p>
+                <a href="#" class="register-link"> </a></p>
             </div>
         </form>
     </div>

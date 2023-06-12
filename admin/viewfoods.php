@@ -16,11 +16,11 @@ $result = $reports->getFoods();
 
     <form action="../controllers/searchfood.php" method="post" class="search-container">
         <input class="form-control" type="search" placeholder="Search by Food ID" aria-label="Search" name="search" require>
-        <button class="primary-button small-button" type="submit"  name="submit">Search</button><br>
+        <button class="primary-button small-button" type="submit" name="submit">Search</button><br>
     </form>
-    
-    
-   
+
+
+
     <table>
         <tr>
             <th>Food ID</th>
@@ -38,8 +38,16 @@ $result = $reports->getFoods();
                 <td>
                     <button type="button" class="primary-button small-button" onclick="window.location.href='viewfood.php?id= <?php echo $r['food_id'] ?>'">view </button>
                     <button type="button" class="warning-button small-button" onclick="window.location.href='editfood.php?id= <?php echo $r['food_id'] ?>'">Edit</button>
-                    <button type="button" class="delete-button small-button" onclick="return confirm('are you sure you want to delete this meal?'); window.location.href='../php-scripts/deletefood.php?id= <?php echo $r['food_id'] ?>'">Delete</button>
-                 </td>
+                    <button type="button" class="delete-button small-button" name="submit" onclick="deletefoodConfirmation(<?php echo $r['food_id']; ?>)">Delete</button>
+                    <script>
+                        function deletefoodConfirmation(food_id) {
+                            if (confirm('Are you sure you want to delete this meal?')) {
+                                window.location.href = '../php-scripts/deletefood.php?food_id=' + food_id;
+                            }
+                            return false;
+                        }
+                    </script>
+                </td>
             </tr>
         <?php } ?>
     </table>

@@ -6,7 +6,6 @@
         $id=$_POST['id'];
         $diet_type=$_POST['diet_type'];
         $food=$_POST['food'];
-        $Day=$_POST['date'];
         
 
         //call function to insert and track if success or not

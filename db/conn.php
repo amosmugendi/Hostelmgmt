@@ -22,4 +22,4 @@
     $crud=new crud($pdo);
     $users=new users($pdo);
     $reports= new reports($pdo);
-    $users->insertUser("admin@gmail.com","password");
+    $users->insertUser("admin@gmail.com","password","Active");

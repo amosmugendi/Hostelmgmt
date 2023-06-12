@@ -18,9 +18,6 @@ $result = $reports->getfoods();
         </select><br>
         <label for="food">Food:</label>
         <input type="text" id="food" name="food" required><br>
-        <label for="Day">Day:</label>
-        <input type="date" id="date" name="date" required><br>
-
         <input type="submit" value="Submit">
         <a onclick="return confirm('are you sure you want to cancel?');" href="viewfoods.php"> Cancel</a>
     </form>

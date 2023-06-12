@@ -8,7 +8,8 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $food_id = $_POST['food_id'];
     //$food = $_POST['food'];
     $diet_type = $_POST['diet_type'];
-    $date = date("Y-m-d");
+    $date=$_POST['date'];
+        
 
 
     /* if ($roomtype == 'single') {

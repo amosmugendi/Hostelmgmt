@@ -11,7 +11,7 @@ include_once '../includes/session.php';
     <title> Hostel <?php $title ?></title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" />
     <link rel="stylesheet" href="../css/add.css">
-    <link rel="stylesheet" href="../css/bookform.css">
+    <!-- <link rel="stylesheet" href="../css/bookform.css"> -->
     <link rel="stylesheet" href="../css/dashboards.css">
     <link rel="stylesheet" href="../css/edit.css">
     <link rel="stylesheet" href="/css/ex.css"> 

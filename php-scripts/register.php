@@ -4,9 +4,10 @@ require_once '../db/conn.php';
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $email = $_POST['email'];
     $password = "password";
+    $Status="Active";
 
     //CALL FUNCTION to insert and track if success or not
-    $isSuccess = $users->insertUser($email, $password);
+    $isSuccess = $users->insertUser($email, $password,$Status);
 
     if ($isSuccess) {
         echo 'Registration Was Successful please head to login page';

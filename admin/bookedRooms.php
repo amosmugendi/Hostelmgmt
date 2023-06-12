@@ -17,7 +17,9 @@ $result = $reports->activeBookings();
                     <th>Booking ID</th>
                     <th>Room Number</th>
                     <th>User ID</th>
-                    <th>Booking Date</th>                   
+                    <th>Booking Date</th>
+                    <th>Checkout Date</th>
+                    
                 </tr>";
             if (count($result) > 0) {
                 foreach ($result as $row) {
@@ -26,6 +28,7 @@ $result = $reports->activeBookings();
                     <td>" . $row["roomid"] . "</td>
                     <td>" . $row["studentregno"] . "</td>
                     <td>" . $row["date"] . "</td> 
+                    <td>" . $row["checkout"] . "</td> 
                 </tr>";
                 }
             } else {

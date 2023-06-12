@@ -38,7 +38,7 @@ class reports
         try {
             $sql = "SELECT * FROM food_menu JOIN foodbookings ON food_menu.food_id = foodbookings.food_id WHERE foodbookings.reg = :id";
             $stmt = $this->db->prepare($sql);
-            $stmt->bindparam(':id', $id); 
+            $stmt->bindparam(':id', $id);
             $stmt->execute();
             $result = $stmt->fetchAll(); // fetch all rows
             return $result;
@@ -75,7 +75,7 @@ class reports
     public function getStudentRoomDetails($id)
     {
         try {
-            $sql = "SELECT * FROM rooms JOIN bookings ON rooms.id = bookings.roomid WHERE bookings.studentregno = :id"; 
+            $sql = "SELECT * FROM rooms JOIN bookings ON rooms.id = bookings.roomid WHERE bookings.studentregno = :id  AND rooms.status <> 'empty'";
             // $sql = "select * from rooms where id=:id";
             $stmt = $this->db->prepare($sql);
             $stmt->bindparam(':id', $id);
@@ -116,7 +116,10 @@ class reports
     public function getStudent()
     {
         try {
-            $sql = "SELECT * FROM `student_details`";
+            $sql = "SELECT sd.*, u.status 
+            FROM student_details sd
+            JOIN users u ON sd.userid = u.id";
+
             $result = $this->db->query($sql);
             return $result;
         } catch (PDOException $e) {
@@ -177,8 +180,9 @@ class reports
             return false;
         }
     }
-    
-    public function searchFoodDetails ($search) {
+
+    public function searchFoodDetails($search)
+    {
         try {
             $sql = "SELECT * FROM food_menu WHERE food_id = :search";
             $stmt = $this->db->prepare($sql);
@@ -191,7 +195,8 @@ class reports
             echo "Error: " . $e->getMessage();
         }
     }
-    public function searchRoomDetails ($search) {
+    public function searchRoomDetails($search)
+    {
         try {
             $sql = "SELECT * FROM rooms WHERE id = :search";
             $stmt = $this->db->prepare($sql);
@@ -204,9 +209,10 @@ class reports
             echo "Error: " . $e->getMessage();
         }
     }
-    public function searchStudentDetails ($search) {
+    public function searchStudentDetails($search)
+    {
         try {
-            $sql = "SELECT * FROM student_details WHERE reg = :search";
+            $sql = "SELECT * FROM student_details WHERE reg = :search OR userid= :search";
             $stmt = $this->db->prepare($sql);
             // $stmt->bindparam(':id', $id);
             $stmt->bindparam(':search', $search);
@@ -217,7 +223,27 @@ class reports
             echo "Error: " . $e->getMessage();
         }
     }
-    public function searchPayment($search) {
+    public function searchStudentStatus($search)
+    {
+        try {
+            $sql = "SELECT sd.*, u.status
+                FROM student_details sd
+                JOIN users u ON sd.userid = u.id
+                WHERE sd.reg = :search OR sd.userid = :search OR u.status=:search";
+
+            $stmt = $this->db->prepare($sql);
+            // $stmt->bindparam(':id', $id);
+            $stmt->bindparam(':search', $search);
+            $stmt->execute();
+            $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
+            return $result;
+        } catch (PDOException $e) {
+            echo "Error: " . $e->getMessage();
+        }
+    }
+
+    public function searchPayment($search)
+    {
         try {
             $sql = "SELECT * FROM `payment` WHERE status = :search";
             $stmt = $this->db->prepare($sql);
@@ -230,5 +256,4 @@ class reports
             echo "Error: " . $e->getMessage();
         }
     }
-    
 }

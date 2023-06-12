@@ -14,8 +14,7 @@ if (isset($_POST['submit'])) {
     $result = $reports->searchStudentDetails($search);
 } else {
     // if the form has not been submitted, redirect to the homepage
-    echo 'No food found';
-    header("Location: ../admin/viewrooms.php");
+    header("Location: ../admin/viewstudents.php");
     exit();
 }
 ?>
@@ -56,6 +55,6 @@ if (isset($_POST['submit'])) {
                 <?php } ?>
     </table>
     <?php } else { ?>
-        <p>No results found.</p>
+        <p>No Student found.</p>
     <?php } ?>
 </section>
