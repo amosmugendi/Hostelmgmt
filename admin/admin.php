@@ -33,7 +33,7 @@ require_once '../db/conn.php';
         </div>
         <div class="card">
             <i class="fas fa-pen-square"></i>
-            <h3>Update Admin Password</h3>
+            <h3>Update Admin</h3>
             <p></p>
             <button id="updatebtn">Update</button>
             <script>
@@ -48,7 +48,7 @@ require_once '../db/conn.php';
                     location.href = "bookedmeals.php";
                 }
                 document.getElementById("updatebtn").onclick = function() {
-                    location.href = "../changepass.php";
+                    location.href = "update.php";
                 }
             </script>
         </div>

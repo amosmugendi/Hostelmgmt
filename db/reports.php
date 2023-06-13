@@ -113,6 +113,39 @@ class reports
         }
     }
 
+    public function getAdmin($id)
+    {
+        try {
+            $sql = "select * from users where id=:id";
+            $stmt = $this->db->prepare($sql);
+            $stmt->bindparam(':id', $id);
+            $stmt->execute();
+            $result = $stmt->fetch();
+            return $result;
+        } catch (PDOException $e) {
+            echo $e->getmessage();
+            return false;
+        }
+    }
+    // In your conn.php file or relevant database connection file
+public function getRoomFee($roomid) {
+        try{
+// Prepare the query
+        $sql = "SELECT fee FROM rooms WHERE id = :roomid";
+
+        // Prepare the statement
+        $stmt = $this->db->prepare($sql);
+        $stmt->bindparam(':roomid', $roomid);
+        $stmt->execute();
+        $result = $stmt->fetch();
+        return $result;
+    } catch (PDOException $e) {
+        echo $e->getmessage();
+        return false;
+    }
+}
+
+
     public function getStudent()
     {
         try {

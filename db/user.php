@@ -92,6 +92,22 @@ class users
             return false;
         }
     }
+    public function updateAdmin($id, $email, $newp)
+    {
+        try {
+            $new_password = md5($newp . $email);
+            $sql = "UPDATE users SET `password` = :newp, `email`= :email WHERE id = :id";
+            $stmt = $this->db->prepare($sql);
+            $stmt->bindParam(':newp', $new_password);
+            $stmt->bindParam(':id', $id);
+            $stmt->bindParam(':email', $email);
+            $stmt->execute();
+            return true;
+        } catch (PDOException $e) {
+            echo $e->getMessage();
+            return false;
+        }
+    }
 
     public function checkPassword($id)
     {

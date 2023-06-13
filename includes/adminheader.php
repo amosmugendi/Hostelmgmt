@@ -52,8 +52,7 @@ include_once '../includes/session.php';
                         <i class="fas fa-money-check"></i>
                         <span class="nav-item">Payment Records</span>
                     </a></li>
-                <li><a href="../logout.php
-                " class="logout">
+                <li><a href="../logout.php" class="logout">
                         <i class="fas fa-sign-out-alt"></i>
                         <span class="nav-item">Logout </span>
                     </a></li>

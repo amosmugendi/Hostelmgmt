@@ -36,10 +36,10 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
   <br>
   <form action="<?php echo htmlentities($_SERVER['PHP_SELF']); ?>" onclick="return checkPassword();" method="post">
     <label for="new_password">New Password:</label>
-    <input type="password" id="password" name="password" minlength="8" required>
+    <input type="password" id="password" name="password" minlength="8">
 
     <label for="confirm_password">Confirm New Password:</label>
-    <input type="password" id="confirm_password" name="confirm_password" minlength="8" required>
+    <input type="password" id="confirm_password" name="confirm_password" minlength="8">
 
     <button type="submit" name="submit">Change Password</button>
   </form>
@@ -84,19 +84,28 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
   </style>
 
 
-  <script>
-    const form = document.querySelector('form');
-    const password = document.getElementById('password').value;
-    const confirm_password = document.getElementById('confirm_password').value;
+<script>
+            function checkPassword() {
+                const password = document.getElementById('password').value;
+                const confirm_password = document.getElementById('confirm_password').value;
 
+                if (password !== confirm_password) {
+                    alert('New password and confirm password do not match!');
+                    return false; // Prevent form submission
+                } else if (password.length < 8) {
+                    alert('Password should be at least 8 characters long');
+                    return false; // Prevent form submission
+                } else if (!/[A-Z]/.test(password) || !/[a-z]/.test(password)) {
+                    alert('Password should contain at least one uppercase and one lowercase letter.');
+                    return false; // Prevent form submission
+                } else if (!/[@_]/.test(password)) {
+                    alert("Password should contain either '@' or '_' symbol.");
+                    return false; // Prevent form submission
+                }
 
-    form.addEventListener('submit', (event) => {
-      if (password !== confirm_password) {
-        event.preventDefault();
-        alert('New password and confirm password do not match!');
-      }
-    });
-  </script>
+                return true; // Allow form submission
+            }
+        </script>
 
 </body>
 
