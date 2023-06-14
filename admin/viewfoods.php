@@ -15,7 +15,7 @@ $result = $reports->getFoods();
     <h1>List of Foods Available</h1>
 
     <form action="../controllers/searchfood.php" method="post" class="search-container">
-        <input class="form-control" type="search" placeholder="Search by Food ID" aria-label="Search" name="search" require>
+        <input class="form-control" type="search" placeholder="search by food-id/diet-type" aria-label="Search" name="search" require>
         <button class="primary-button small-button" type="submit" name="submit">Search</button><br>
     </form>
 
@@ -25,6 +25,8 @@ $result = $reports->getFoods();
         <tr>
             <th>Food ID</th>
             <th>Food</th>
+            <th>Diet Type</th>
+
             <th>Actions</th>
             <th>
                 <button class="primary-button small-button" onclick="window.location.href='addfood.php'">Add Food</button>
@@ -35,6 +37,7 @@ $result = $reports->getFoods();
             <tr>
                 <td> <?php echo $r['food_id'] ?></td>
                 <td> <?php echo $r['food'] ?></td>
+                <td> <?php echo $r['diet_type'] ?></td>
                 <td>
                     <button type="button" class="primary-button small-button" onclick="window.location.href='viewfood.php?id= <?php echo $r['food_id'] ?>'">view </button>
                     <button type="button" class="warning-button small-button" onclick="window.location.href='editfood.php?id= <?php echo $r['food_id'] ?>'">Edit</button>

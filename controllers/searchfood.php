@@ -33,9 +33,8 @@ if (isset($_POST['submit'])) {
             <thead>
                 <tr>
                     <th scope="col">Food ID</th>
-                    <th scope="col">Food Type</th>
                     <th scope="col">Food</th>
-                    <th scope="col">Day</th>
+                    <th scope="col">Food Type</th>
                     <th>Actions</th>
                     <th>
                         <button class="primary-button small-button" onclick="window.location.href='../admin/viewfoods.php'">Back</button>
@@ -46,9 +45,8 @@ if (isset($_POST['submit'])) {
                 <?php foreach ($result as $row) { ?>
                     <tr>
                         <td><?php echo $row['food_id']; ?></td>
-                        <td><?php echo $row['diet_type']; ?></td>
                         <td><?php echo $row['food']; ?></td>
-                        <td><?php echo $row['Day']; ?></td>
+                        <td><?php echo $row['diet_type']; ?></td>
                         <td>
                             <button type="button" class="primary-button small-button" onclick="window.location.href='../admin/viewfood.php?id= <?php echo $row['food_id'] ?>'">view </button>
                             <button type="button" class="warning-button small-button" onclick="window.location.href='../admin/editfood.php?id= <?php echo $row['food_id'] ?>'">Edit</button>

@@ -7,11 +7,11 @@
         $food_id=$_POST['food_id'];
         $diet_type=$_POST['diet_type'];
         $food=$_POST['food'];
-        $Day=$_POST['date'];
+        // $Day=$_POST['date'];
         //$food_id=$_POST['food_id'];
     
     //call Crud function
-    $result=$crud->editFood($food_id, $diet_type, $food, $Day);
+    $result=$crud->editFood($food_id, $diet_type, $food);
     //Redirect to viewrecords.php
     if($result){
         header("Location: ../admin/viewfoods.php");

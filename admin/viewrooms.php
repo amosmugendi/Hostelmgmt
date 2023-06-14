@@ -14,7 +14,7 @@ $result = $reports->getRooms();
 <section class="main">
     <h1>List of Rooms</h1>
     <form action="../controllers/searchroom.php" method="post" class="search-container">
-        <input class="form-control" type="search" placeholder="Search by RoomID" aria-label="Search" name="search" require>
+        <input class="form-control" type="search" placeholder="Search by RoomID/RoomType" aria-label="Search" name="search" require>
         <button class="primary-button small-button" type="submit" name="submit">Search</button><br>
     </form>
     <table>

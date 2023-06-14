@@ -217,7 +217,7 @@ public function getRoomFee($roomid) {
     public function searchFoodDetails($search)
     {
         try {
-            $sql = "SELECT * FROM food_menu WHERE food_id = :search";
+            $sql = "SELECT * FROM food_menu WHERE food_id = :search OR diet_type=:search";
             $stmt = $this->db->prepare($sql);
             // $stmt->bindparam(':id', $id);
             $stmt->bindparam(':search', $search);
@@ -231,7 +231,7 @@ public function getRoomFee($roomid) {
     public function searchRoomDetails($search)
     {
         try {
-            $sql = "SELECT * FROM rooms WHERE id = :search";
+            $sql = "SELECT * FROM rooms WHERE id = :search OR room_type=:search";
             $stmt = $this->db->prepare($sql);
             // $stmt->bindparam(':id', $id);
             $stmt->bindparam(':search', $search);

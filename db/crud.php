@@ -132,10 +132,10 @@ class crud
         }
     }
 
-    public function editFood($food_id, $diet_type, $food, $Day)
+    public function editFood($food_id, $diet_type, $food)
     {
         try {
-            $sql = "UPDATE `food_menu` SET `food_id`= :food_id, `diet_type`=:diet_type, `food`=:food,`Day`=:date WHERE food_id= :food_id";
+            $sql = "UPDATE `food_menu` SET `food_id`= :food_id, `diet_type`=:diet_type, `food`=:food WHERE food_id= :food_id";
 
             $stmt = $this->db->prepare($sql);
             //bind all placeholders to the actual values
@@ -143,7 +143,7 @@ class crud
             $stmt->bindparam(':food_id', $food_id);
             $stmt->bindparam(':diet_type', $diet_type);
             $stmt->bindparam(':food', $food);
-            $stmt->bindparam(':date', $Day);
+            // $stmt->bindparam(':date', $Day);
 
             //execute statement
 
